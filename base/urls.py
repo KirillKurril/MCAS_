@@ -27,7 +27,12 @@ urlpatterns = [
 
     path('teachers-info/', views.teachersInfo, name = 'teachers-info'),
 
-    path('piano-dep/', views.pianoDepartment, name='piano-dep'),
+    path('piano-dep/', views.piano_department, name='piano-dep'),
+    path('folk-dep/', views.folk_department, name='folk-dep'),
+    path('strings-dep/', views.strings_department, name='strings-dep'),
+    path('folk-strings-dep/', views.folk_strings_department, name='folk-strings-dep'),
+    path('choir-dep/', views.choir_department, name='choir-dep'),
+    path('theory-dep/', views.theory_department, name='theory-dep'),
 
     path('piano-events/', views.get_piano, name='piano-events'),
     path('strings-events/', views.get_strings, name='strings-events'),

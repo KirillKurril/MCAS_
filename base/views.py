@@ -239,8 +239,27 @@ def teachersInfo(request):
     return render(request, 'base/teachers-info.html', context)
 
 
-def pianoDepartment(request):
+def piano_department(request):
     return render(request, 'base/piano_department.html')
+
+
+def folk_department(request):
+    return render(request, 'base/folk_department.html')
+
+
+def strings_department(request):
+    return render(request, 'base/string_department.html')
+
+
+def folk_strings_department(request):
+    return render(request, 'base/folk-string_department.html')
+
+
+def choir_department(request):
+    return render(request, 'base/choral_department.html')
+
+def theory_department(request):
+    return render(request, 'base/theoretical_department.html')
 
 
 def get_piano(request):

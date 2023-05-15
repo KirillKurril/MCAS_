@@ -3,8 +3,7 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
     <head>
         <link rel="stylesheet" href="{% static 'styles/piano-style.css' %}">
         <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
@@ -22,7 +21,7 @@
           initialView: 'dayGridMonth',
           firstDay: 1,
           events:{
-            url:{% url 'events' %},
+            url:{% url 'piano-events' %},
             method: 'GET',
           }
         });
@@ -129,8 +128,8 @@
                 </div>                 
             </section>             
         </main>
-        <script src="{% static 'styles/fc/packages/moment/index.global.min.js' %}"></script>
-        <script src="{% static 'styles/fc/packages' %}"></script>
+        <script src="{% static 'styles/assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'styles/bootstrap/js/bootstrap.min.js' %}"></script>
     </body>     
 </html>
 
