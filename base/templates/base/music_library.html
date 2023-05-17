@@ -1,13 +1,126 @@
 {% extends 'main.html' %}
 
-{% block content %}
-    {% for file in files  %}
-        <div>
-        <a href="{% url 'file-download' file.id %}" download>{{ file.file_name }}</a>
-        </div>
-    {% endfor %}
+{% load static %}
 
-    {% if request.user.is_staff or request.user.status == 'teacher' %}
-        <a href="{% url 'file-upload' %}">Загрузить новый файл</a>
-    {% endif %}
-{% endblock content %}
+{% block content %}
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/piano-style.css' %}">
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>
+        <link rel="stylesheet" href="{% static 'styles/fc/style.css' %}">
+        <script src="{% static 'styles/js/main.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'styles/library/library.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/library/cool-button.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/library/nice-butt-on.css' %}">
+        <title>Музыкальная библиотека</title>         
+    </head>     
+    <body class="text-muted"> 
+
+        <main> 
+            <section class="bg-secondary hero-block pb-5 position-relative text-white"> 
+                <div class="header-pic"> 
+                    <div class="header-text display-3 fw-bold mb-3">Музыкальная библиотека</div>                     
+                    <img src="{% static 'images/sources/headers/imgonline-com-ua-Resize-J3r2AIOjabPFzAH9.png' %}" style="width: 100%; " class="header-pic-pic">
+                </div>                 
+            </section>             
+            <section class=" main-content"> 
+                <div class="row"> 
+                    <div class="content"> 
+                        <div class="search-row"> 
+                            <input type="text" id="queryInput" class="search form-control" list="queryOptions" placeholder="Введите название книги..."> 
+                            <datalist id="queryOptions"> 
+                                <option value="Вариант 1" id="gen-hint-1"> 
+
+                                <option value="Вариант 2" id="gen-hint-2"> 
+
+                                <option value="Вариант 3" id="gen-hint-3"> 
+                            </datalist>                             
+                            <button type="submit" class="floating-button search-butt">Поиск</button>                             
+                        </div>                         
+                        <div class="answer-row search-row">
+                            <div class="col-1">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Название: </td>
+                                            <td id="name">Пробник 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Отделение: </td>
+                                            <td id="department">Пробник 2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Автор</td>
+                                            <td id="author">Пробник 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Предмет</td>
+                                            <td id="subject">Пробник 4</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-2">
+                                <div class="search-row andd">
+                                    <a href="" class="double-border-button">Скачать</a>
+                                </div>
+                            </div>
+                        </div>                         
+                    </div>                     
+                    <div class="necontent"> 
+                        <div class="bg-secondary features pb-5 pt-5 text-center text-lg-start text-white"> 
+                            <form id="filterForm" class="filterForm_"> 
+                                <div class="sort-header">Отсортировать</div>
+                                <input type="text" id="departmentInput" class="search form-control feature-search" list="department-QueryOptions" placeholder="Отделение...">
+                                <datalist id="department-queryOptions"> 
+                                    <option value="Вариант 1" id="dep-hint-1"> 
+
+                                    <option value="Вариант 2" id="dep-hint-2"> 
+
+                                    <option value="Вариант 3" id="dep-hint-3"> 
+                                </datalist>                                 
+                                <input type="text" id="authorInput" class="search form-control feature-search" list="author-queryOptions" placeholder="Автор...">
+                                <datalist id="author-queryOptions"> 
+                                    <option value="Вариант 1" id="aut-hint-1"> 
+
+                                    <option value="Вариант 2" id="aut-hint-2"> 
+
+                                    <option value="Вариант 3" id="aut-hint-3"> 
+                                </datalist>                                 
+                                <input type="text" id="subjectInput" class="search form-control feature-search" list="subject-queryOptions" placeholder="Предмет..."> 
+                                <datalist id="subject-queryOptions"> 
+                                    <option value="Вариант 1" id="sub-hint-1"> 
+
+                                    <option value="Вариант 2" id="sub-hint-2"> 
+
+                                    <option value="Вариант 3" id="sub-hint-3"> 
+                                </datalist>
+                                <div class="plus">
+                                    <button type="submit" class="search-butty">Применить</button>
+                                </div>
+                            </form>                             
+                        </div>
+                        {% if user.status == 'teacher' or user.is_staff %}
+                        <div class="bg-secondary features pb-5 pt-5 text-center text-lg-start text-white">
+                            <form id="filterForm" class="filterForm_" method="POST" enctype="multipart/form-data" action="{% url 'music-library' %}">
+                                {% csrf_token %}
+                                <div class="sort-header">Добавить материал</div>
+                                <input type="text" name="file_name" class="search form-control feature-search" placeholder="Укажите название"/>
+                                <input type="text" name="departmentCreate" class="search form-control feature-search" placeholder="Укажите отделение"/>
+                                <input type="text" name="authorCreate" class="search form-control feature-search" placeholder="Укажите автора"/>
+                                <input type="text" name="subjectCreate" class="search form-control feature-search" placeholder="Укажите предмет"/>
+                                <input type="file" name="fileToUpload">
+                                <div class="plus">
+                                    <button type="submit" class="search-butty">Отправить</button>
+                                </div>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>                 
+            </section>             
+        </main>         
+    </body>     
+</html>
+
+{% endblock %}

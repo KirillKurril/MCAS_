@@ -55,7 +55,7 @@ class AboutForm(ModelForm):
 class FileUploadForm(forms.ModelForm):
     class Meta:
         model = File
-        fields = ['file_upload', 'file_name']
+        fields = '__all__'
 
 
 class FileUUploadForm(forms.ModelForm):

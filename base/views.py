@@ -183,6 +183,20 @@ def teachers(request):
 
 
 def musicLib(request):
+    if request.method == 'POST':
+        name = request.POST.get('file_name')
+        print(name)
+        department = request.POST.get('departmentCreate')
+        author = request.POST.get('authorCreate')
+        subject = request.POST.get('subjectCreate')
+        file = request.FILES.get('fileToUpload')
+
+        file_obj = File(file_name=name, department=department, author=author, subject=subject, file_upload=file)
+        file_obj.save()
+
+        return redirect('home')
+    else:
+        form = FileUploadForm()
     files = File.objects.all()
     context = {'files':files}
     return render(request, 'base/music_library.html', context)
@@ -190,13 +204,20 @@ def musicLib(request):
 
 def file_upload(request):
     if request.method == 'POST':
-        form = FileUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+        name = request.POST.get('file_name')
+        print(name)
+        department = request.POST.get('departmentCreate')
+        author = request.POST.get('authorCreate')
+        subject = request.POST.get('subjectCreate')
+        file = request.FILES.get('fileToUpload')
+
+        file_obj = File(file_name=name, department=department, author=author, subject=subject, file_upload=file)
+        file_obj.save()
+
+        return redirect('home')
     else:
-        form = FileUploadForm
-    context = {'form':form}
+        form = FileUploadForm()
+    context = {'form': form}
     return render(request, 'base/file_upload.html', context)
 
 
