@@ -1,11 +1,149 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
-
-    <img width="250px" height="250px" src="{{ student.avatar.url }}">
-    <div>{{ student.f }}</div>
-    <div>{{ student.i }}</div>
-    <div>{{ student.o }}</div>
-
-
+<html lang="en"> 
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/piano-style.css' %}">
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
+        <link rel="stylesheet" href="{% static 'styles/fc/style.css' %}">
+        <script src="{% static 'styles/js/main.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'styles/info/student_info.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/loading-button.css' %}">
+        <title>Информация об учащемся</title>         
+    </head>     
+    <body class="text-muted">
+        <main>              
+            <section class=" main-content cbg-light pb-5 pt-5"> 
+                <div class="row text-white"> 
+                   <div class="main-info">
+                        <div class="photo-column">
+                            <div class="image-container">
+                                <img src= '{{ student.avatar.url }}' name="student-photo">
+                            </div>
+                            
+                        </div>
+                        <div class="table-column">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>ФИО:</th>
+                                        <th name="name">{{ student.f }} {{ student.i }} {{ student.o }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Отделение:</th>
+                                        <th name="department">{{ student.department_name }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Инструмент:</th>
+                                        <th name="instrument">{{ student.instrument_name }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Имя преподавателя по специальности</th>
+                                        <th name="teacher-name">{{ student.teacher_name }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Контактный телефон преподавателя</th>
+                                        <th name="teacher-number">{{ student.teacher_number }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Контактный телефон учащегося</th>
+                                        <th name="number">{{ student.user_number }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Срок обучения</th>
+                                        <th name="learning-duration">{{ student.years }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Год обучения</th>
+                                        <th name="grade">5</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Имя законного представителя</th>
+                                        <th name="parent-name-1">{{ student.parent_first_name }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Телефон законного представителя</th>
+                                        <th name="parent-number-1">{{ student.parent_first_number }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Имя законного представителя</th>
+                                        <th name="parent-name-1">{{ student.parent_second_name }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Телефон законного представителя</th>
+                                        <th name="parent-number-2">{{ student.parent_second_number }}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <a href="" class="border-button" name="individual-plan">Индивидуальный план</a>
+                                        </th>
+                                        <th>
+                                            <a href="{% url 'diary' student.id %}" class="border-button" name="diary-href">Дневник ученика</a>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                   </div>
+                   <div class="add-info">
+                        <div class="add-column">
+                                <div class="awards">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Список наград и конкурсов</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                {% if student.rewards == None %}
+                                                <td style="width: 70%;" name="ivent">Пусто</td>
+                                                {% else %}
+                                                <td style="width: 70%;" name="ivent">Пуст{{ student.rewards }}</td>
+                                                {% endif %}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="attendance">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" name="attendance">Контроль посещения концертов и внешкольных мероприятий</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="height: 7rem;">
+                                                <td style="width: 30%;" name="date">сегодня</td>
+                                                <td style="width: 70%;" name="ivent">Пусто</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="groups">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Группы</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td name="groups">
+                                                    {% for group in groups %}
+                                                        group.number
+                                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="" class="border-button" name="edit">Редактировать профиль</a>  
+                        </div>
+                   </div>
+                </div>                 
+            </section>             
+        </main>         
+    </body>     
+</html>
 {% endblock content %}

@@ -5,6 +5,20 @@
 {% block content %}
 <html lang="en">
     <head>
+        <style>
+            .search-form {
+            display: flex;
+        }
+
+        .search {
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+
+        .search-butt {
+            flex-shrink: 0;
+        }
+        </style>
         <link rel="stylesheet" href="{% static 'styles/piano-style.css' %}">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>
         <link rel="stylesheet" href="{% static 'styles/fc/style.css' %}">
@@ -26,46 +40,50 @@
             <section class=" main-content"> 
                 <div class="row"> 
                     <div class="content"> 
-                        <div class="search-row"> 
-                            <input type="text" id="queryInput" class="search form-control" list="queryOptions" placeholder="Введите название книги..."> 
+                        <div class="search-row">
+                            <form action="" method="GET" class="search-form">
+                            <input type="text" name="queryInput" class="search form-control" list="queryOptions" placeholder="Введите название книги...">
                             <datalist id="queryOptions"> 
                                 <option value="Вариант 1" id="gen-hint-1"> 
 
                                 <option value="Вариант 2" id="gen-hint-2"> 
 
                                 <option value="Вариант 3" id="gen-hint-3"> 
-                            </datalist>                             
-                            <button type="submit" class="floating-button search-butt">Поиск</button>                             
-                        </div>                         
+                            </datalist>
+                            <button type="submit" class="floating-button search-butt" >Поиск</button>
+                            </form>
+                        </div>
+                        {% for file in files %}
                         <div class="answer-row search-row">
                             <div class="col-1">
                                 <table>
                                     <tbody>
                                         <tr>
                                             <td>Название: </td>
-                                            <td id="name">Пробник 1</td>
+                                            <td id="name">{{ file.file_name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Отделение: </td>
-                                            <td id="department">Пробник 2</td>
+                                            <td id="department">{{ file.department }}</td>
                                         </tr>
                                         <tr>
                                             <td>Автор</td>
-                                            <td id="author">Пробник 3</td>
+                                            <td id="author">{{ file.author }}</td>
                                         </tr>
                                         <tr>
                                             <td>Предмет</td>
-                                            <td id="subject">Пробник 4</td>
+                                            <td id="subject">{{ file.subject }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="col-2">
                                 <div class="search-row andd">
-                                    <a href="" class="double-border-button">Скачать</a>
+                                    <a href="{{ file.file_upload.url }}" class="double-border-button">Скачать</a>
                                 </div>
                             </div>
-                        </div>                         
+                        </div>
+                        {% endfor %}
                     </div>                     
                     <div class="necontent"> 
                         <div class="bg-secondary features pb-5 pt-5 text-center text-lg-start text-white"> 

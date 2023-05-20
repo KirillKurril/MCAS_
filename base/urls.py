@@ -45,7 +45,7 @@ urlpatterns = [
     path('new-event/', views.new_event, name='new-event'),
     path('contingent/', views.contingent, name='contingent'),
     path('student-info/<str:pk>', views.student_info, name='student-info'),
-    path('diary/', views.diary, name='diary'),
+    path('diary/<str:pk>', views.diary, name='diary'),
     path('homework/', views.homework, name='homework'),
 
 

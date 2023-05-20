@@ -9,7 +9,7 @@ from .forms import NewForm, RegistrationForm, AboutForm, \
     FileUploadForm, EventCreationForm, TaskCreationForm, \
     FileUUploadForm
 from django.shortcuts import get_object_or_404
-import os
+import mimetypes
 
 # Create your views here.
 
@@ -183,6 +183,16 @@ def teachers(request):
 
 
 def musicLib(request):
+    if request.method == 'GET':
+        query = request.GET.get('queryInput')
+        if query:
+            files = File.objects.filter(file_name__icontains=query)
+        else:
+            files = File.objects.all()
+
+        context = {'files': files}
+        return render(request, 'base/music_library.html', context)
+
     if request.method == 'POST':
         name = request.POST.get('file_name')
         print(name)
@@ -234,7 +244,7 @@ def file_uupload(request):
 
 
 def download_file(request, pk):
-    file = get_object_or_404(File, id = pk)
+    file = get_object_or_404(File, id=pk)
     response = HttpResponse(file.file_upload)
     response['Content-Disposition'] = f'attachment; filename="{file.file_upload.name}"'
     return response
@@ -243,7 +253,6 @@ def download_file(request, pk):
 def download_ufile(request, pk):
     file = get_object_or_404(UserFiles, id = pk)
     response = HttpResponse(file.file_upload)
-    print(file.file_upload)
     response['Content-Disposition'] = f'attachment; filename="{file.file_upload.name}"'
     return response
 
@@ -257,7 +266,7 @@ def rewards(request):
 def teachersInfo(request):
     info = About.objects.get(id = 1)
     context = {'info':info}
-    return render(request, 'base/teachers-info.html', context)
+    return render(request, 'base/teacher_info.html', context)
 
 
 def piano_department(request):
@@ -338,14 +347,15 @@ def contingent(request):
 
 def student_info(request, pk):
     student = User.objects.get(id=pk)
-    context = {"student": student}
+    groups = User.objects.get(id=pk).groups.all()
+    context = {"student": student, "groups":groups}
     return render(request, 'base/student_info.html', context)
 
 
-def diary(request):
-    user = request.user
+def diary(request, pk):
+    user = User.objects.get(id=pk)
     tasks = Task.objects.all()
-    context = {'tasks':tasks}
+    context = {'tasks':tasks, 'user':user}
     return render(request, 'base/diary.html', context)
 
 
