@@ -7,9 +7,10 @@ from .models import New, User, About, Message, File, Event,\
 from django.contrib.auth import authenticate, login, logout
 from .forms import NewForm, RegistrationForm, AboutForm, \
     FileUploadForm, EventCreationForm, TaskCreationForm, \
-    FileUUploadForm
+    FileUUploadForm, UserForm
 from django.shortcuts import get_object_or_404
 import mimetypes
+from datetime import datetime
 
 # Create your views here.
 
@@ -348,7 +349,12 @@ def contingent(request):
 def student_info(request, pk):
     student = User.objects.get(id=pk)
     groups = User.objects.get(id=pk).groups.all()
-    context = {"student": student, "groups":groups}
+    current_year = datetime.now().year
+    start_year = student.start_year.year
+    grade = current_year - start_year + 1
+    if datetime.now().month < 9:
+        grade -= 1
+    context = {"student": student, "groups":groups, "grade":grade}
     return render(request, 'base/student_info.html', context)
 
 
@@ -371,3 +377,19 @@ def homework(request):
     return render(request, 'base/homework.html', context)
 
 
+def student_edit(request, pk):
+    student = User.objects.get(id=pk)
+    user = get_object_or_404(User, id=pk)
+    if request.method == 'POST':
+        print(123)
+
+        form = RegistrationForm(request.POST, instance=user)
+        if form.is_valid():
+            print(2)
+            form.save()
+            return redirect(request, 'base/student-info/')
+    else:
+        form = UserForm(instance=user)
+
+    context = {'form':form, 'user':user, 'student':student}
+    return render(request, 'base/student_edit.html', context)

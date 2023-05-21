@@ -22,9 +22,7 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = [
             'username',
-            'f',
-            'i',
-            'o',
+            'fio',
             'department_name',
             'teacher_name',
             'instrument_name',
@@ -41,6 +39,12 @@ class RegistrationForm(UserCreationForm):
             'password1',
             'password2',
         ]
+
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields="__all__"
 
 
 class AboutForm(ModelForm):

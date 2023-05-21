@@ -26,6 +26,8 @@ urlpatterns = [
     path('rewards/', views.rewards, name = 'rewards'),
 
     path('teachers-info/', views.teachersInfo, name = 'teachers-info'),
+    path('student-info/<str:pk>', views.student_info, name='student-info'),
+    path('student-edit/<str:pk>', views.student_edit, name='student-edit'),
 
     path('piano-dep/', views.piano_department, name='piano-dep'),
     path('folk-dep/', views.folk_department, name='folk-dep'),
@@ -44,7 +46,7 @@ urlpatterns = [
     #path('events/<str:pk>', views.get_uni, name='events'),
     path('new-event/', views.new_event, name='new-event'),
     path('contingent/', views.contingent, name='contingent'),
-    path('student-info/<str:pk>', views.student_info, name='student-info'),
+
     path('diary/<str:pk>', views.diary, name='diary'),
     path('homework/', views.homework, name='homework'),
 

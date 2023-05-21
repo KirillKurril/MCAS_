@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<html lang="en"> 
+<html lang="en">
     <head>
         <link rel="stylesheet" href="{% static 'styles/piano-style.css' %}">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
@@ -18,7 +18,7 @@
                    <div class="main-info">
                         <div class="photo-column">
                             <div class="image-container">
-                                <img src= '{{ student.avatar.url }}' name="student-photo">
+                                <img src="{{ student.avatar.url }}" alt="Image" name="student-photo">
                             </div>
                             
                         </div>
@@ -27,7 +27,7 @@
                                 <tbody>
                                     <tr>
                                         <th>ФИО:</th>
-                                        <th name="name">{{ student.f }} {{ student.i }} {{ student.o }}</th>
+                                        <th name="name">{{ student.fio }}</th>
                                     </tr>
                                     <tr>
                                         <th>Отделение:</th>
@@ -55,7 +55,7 @@
                                     </tr>
                                     <tr>
                                         <th>Год обучения</th>
-                                        <th name="grade">5</th>
+                                        <th name="grade">{{ grade }}</th>
                                     </tr>
                                     <tr>
                                         <th>Имя законного представителя</th>
@@ -96,11 +96,9 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                {% if student.rewards == None %}
-                                                <td style="width: 70%;" name="ivent">Пусто</td>
-                                                {% else %}
-                                                <td style="width: 70%;" name="ivent">Пуст{{ student.rewards }}</td>
-                                                {% endif %}
+                                                <td name="awards">
+                                                    {{ student.rewards }}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -115,7 +113,7 @@
                                         <tbody>
                                             <tr style="height: 7rem;">
                                                 <td style="width: 30%;" name="date">сегодня</td>
-                                                <td style="width: 70%;" name="ivent">Пусто</td>
+                                                <td style="width: 70%;" name="ivent">Торжественный вынос мусора</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -131,14 +129,14 @@
                                             <tr>
                                                 <td name="groups">
                                                     {% for group in groups %}
-                                                        group.number
+                                                        {{ group.number }}<br>
                                                     {% endfor %}
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="" class="border-button" name="edit">Редактировать профиль</a>  
+                                <a href="{% url 'student-edit' student.id %}" class="border-button" name="edit">Редактировать профиль</a>
                         </div>
                    </div>
                 </div>                 
@@ -146,4 +144,4 @@
         </main>         
     </body>     
 </html>
-{% endblock content %}
+{% endblock %}

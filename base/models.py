@@ -32,9 +32,7 @@ class User(AbstractUser):
         ('teacher', 'Учитель'),
     )
 
-    f = models.CharField(max_length=200, null = False, default='Фамилия', verbose_name="Фамилия")
-    i = models.CharField(max_length=200, null = False, default='Имя', verbose_name='Имя')
-    o = models.CharField(max_length=200, null = False, default='Отчество', verbose_name='Отчество')
+    fio = models.CharField(max_length=200, null = False, default='ФИО', verbose_name="ФИО")
     department_name = models.CharField(max_length=200, null = False, default='Департамент', verbose_name='Департамент')
     teacher_name = models.CharField(max_length=200, null = False, default='Учитель', verbose_name='Учитель')
     instrument_name = models.CharField(max_length=200, null = False, default='Инструмент', verbose_name='Инструмент')
@@ -55,7 +53,6 @@ class User(AbstractUser):
                                verbose_name="Загрузите аватар для профиля")
     groups = models.ManyToManyField(GroupNumber, blank=True)
     subjects = models.ManyToManyField(Subject, blank=True)
- 
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []

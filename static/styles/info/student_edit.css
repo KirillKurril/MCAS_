@@ -1,0 +1,145 @@
+.main-content {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.row{
+    color: white;
+    display: flex;
+    width: 95%;
+    border: #159357;
+}
+
+.main-info{
+    border-radius: 5%;
+    background: linear-gradient(to top, #38b13e 0%, #24681c 100%);
+    height: 100%;
+    display: flex;
+    width: 65%;
+    border: #173468;
+    height: auto;
+}
+
+.add-info{
+    justify-content: center;
+
+    display: flex;
+    width: 30%;
+    margin-left: 5%;
+    border:  #486279;
+    border-radius: 5%;
+    height: auto;
+    background: linear-gradient(to top, #38b13e 0%, #24681c 100%);
+    display: flex;
+}
+
+.main-column{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: auto;
+}
+
+.awards{
+    margin-bottom: 15%;
+    display: flex;
+}
+
+.attendance{
+    display: flex;
+    align-items: center;
+}
+
+.photo-column{
+    
+    width: 20%;
+    margin: 5%;
+    border:  #279138;
+}
+
+.image-container {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+.table-column{
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.table-column table{
+    width: 100%;
+}
+
+.table-column th{
+    padding: 3%;
+}
+
+.main-column table{
+    border: white;
+}
+
+.add-column{
+    margin-top: 7%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: auto;;
+}
+
+.add-column table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.add-column div{
+    margin: 5%;
+    margin-top: 15%;
+    width: 100%;
+}
+
+.add-column td{
+    height: 5rem;
+    border: 1px solid white;
+    padding: 3%;
+}
+
+.add-column th{
+    text-align: center;
+    height: 2rem;
+    border: 1px solid white;
+    padding: 3%;
+}
+
+textarea{
+    width: 100%;
+    align-self: center;
+}
+
+input{
+    font-size: 0.9rem;
+    width: 100%;
+    align-self: center;
+}
+
+.example-2 .btn-tertiary{color: #41bc32;padding:0;line-height:40px;width:100%;margin:auto;display:block;border:2px solid #41bc32}
+.example-2 .btn-tertiary:hover,.example-2 .btn-tertiary:focus{color:white;border-color:white}
+.example-2 .input-file{width:.1px;height:.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}
+.example-2 .input-file + .js-labelFile{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 10px;cursor:pointer}
+.example-2 .input-file + .js-labelFile .icon:before{content:"\f093"}
+.example-2 .input-file + .js-labelFile.has-file .icon:before{content:"\f00c";color:#5AAC7B}
