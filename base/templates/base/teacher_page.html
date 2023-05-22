@@ -1,23 +1,16 @@
-<!DOCTYPE html> 
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
 <html lang="en"> 
-    <head> 
-        <!-- ----------------------------------------------------------------------------- -->         
-        <meta charset="utf-8"> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-        <meta name="description" content=""> 
-        <meta name="author" content=""> 
-        <!-- Bootstrap core CSS -->         
-        <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"> 
-        <!-- Custom styles for this template -->         
-        <link rel="stylesheet" href="blocks.css"> 
-        <link href="style.css" rel="stylesheet"> 
-        <link rel="stylesheet" href="./piano-style.css"> 
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/blocks.css' %}">
+        <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'styles/piano-style.css' %}">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
-        <link rel="stylesheet" href="./fc/style.css"> 
-        <script src="./js/main.js"></script>         
-        <link rel="stylesheet" href="teacher_page.css"> 
-        <link rel="stylesheet" href="loading-button.css"> 
+        <link rel="stylesheet" href="{% static 'styles/fc/style.css' %}">
+        <script src="{% static 'styles/js/main.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'styles/info/teacher_page.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/loading-button.css' %}">
         <script>
             document.addEventListener('DOMContentLoaded', function() {
               var calendarEl = document.getElementById('calendar');
@@ -32,33 +25,7 @@
           </script>         
         <title>Информация об учащемся</title>         
     </head>     
-    <body class="text-muted"> 
-        <!-- ----------------------------------------------------------------------------- -->         
-        <header class="bg-secondary"> 
-            <nav class="navbar navbar-dark navbar-expand-lg pb-3 pt-3 shadow-none"> 
-                <div class="container"> <a class="navbar-brand text-white" href="#"> <img src="./sources/emblem.png" alt="Логотип" class="me-2"> <span class="align-middle fw-bold h4 ms-1">МДШИ</span></a> 
-                    <button class="navbar-toggler rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown-2" aria-controls="navbarNavDropdown-2" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
-                    </button>                     
-                    <div class="collapse navbar-collapse " id="navbarNavDropdown-2"> 
-                        <ul class="ms-auto navbar-nav"> 
-                            <li class="nav-item"> <a class="active nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" aria-current="page" href="./index.html">Главная</a> 
-                            </li>                             
-                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Музыкальная библиотека</a> 
-                            </li>                             
-                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Личный кабинет</a> 
-                            </li>                             
-                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Новости</a> 
-                            </li>                             
-                            <li class="nav-item"> 
-</li>                             
-                            <li class="nav-item"> 
-</li>                             
-                        </ul>                         
-                    </div>                     
-                </div>                 
-            </nav>             
-        </header>         
-        <!-- ----------------------------------------------------------------------------- -->         
+    <body class="text-muted">
         <main style="color: black;"> 
             <section class=" main-content cbg-light pb-5 pt-5"> 
                 <div class="row"> 
@@ -74,31 +41,12 @@
                                 </table>                                 
                                 <div class="scroll-table-body"> 
                                     <table> 
-                                        <tbody> 
+                                        <tbody>
+                                        {% for msg in messages %}
                                             <tr> 
-                                                <td>Наш Советский Союз покарает</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>Вес мир от Европы к Неве на восто-ок</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>Над Землёой везде будуть петь</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>Столица, водка, Советский медведь наш!</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>Все народы здесь стояат того</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>Что мы все воплотили на свет</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>Благодарный низкий поклон</td> 
-                                            </tr>                                             
-                                            <tr> 
-                                                <td>От самой могуществернной в мире!</td> 
-                                            </tr>                                             
+                                                <td>{{ msg.body }}</td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>                                         
                                     </table>                                     
                                 </div>                                 
@@ -115,7 +63,7 @@
                         </div>                         
                     </div>                     
                     <div class="booking"> 
-                        <div class="docs"> <a href="" class="border-button" name="individual-plan">Методический паспорт</a> <a href="" class="border-button" name="individual-plan">Взаимопосещаемость</a> <a href="" class="border-button" name="individual-plan">Журнал</a> 
+                        <div class="docs"> <a href="{{ passport.file_upload.url }}" class="border-button" name="individual-plan">Методический паспорт</a> <a href="" class="border-button" name="individual-plan">Взаимопосещаемость</a> <a href="" class="border-button" name="individual-plan">Журнал</a>
                         </div>                         
                         <div class="booking-content"> 
                             <div class="booking-header">Забронировать зал</div>                             
@@ -150,15 +98,16 @@
                                 </div>                                 
                             </div>                             <a href="" style="padding: 3%; width: 100%;" class="border-button" name="individual-plan">Забронировать</a> 
                         </div>                         
-                        <div class="general-bu qttons"> <a href="" class="border-button" name="individual-plan">Общее расписание</a> <a href="" class="border-button" name="individual-plan">Контингент</a> 
+                        <div class="general-bu qttons"> <a href="" class="border-button" name="individual-plan">Общее расписание</a> <a href="{% url 'contingent' %}" class="border-button" name="individual-plan">Контингент</a>
                         </div>                         
                     </div>                     
                 </div>                 
             </section>             
         </main>         
-        <script src="assets/js/popper.min.js"></script>         
-        <script src="bootstrap/js/bootstrap.min.js"></script>         
-        <script src="./fc/packages/moment/index.global.min.js"></script>         
-        <script src="./fc/packages/"></script>         
+        <script src="{% static 'styles/assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'styles/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'styles/fc/packages/moment/index.global.min.js' %}"></script>
+        <script src="{% static 'styles/fc/packages' %}"></script>
     </body>     
 </html>
+{% endblock content %}

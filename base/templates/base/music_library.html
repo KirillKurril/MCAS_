@@ -87,9 +87,9 @@
                     </div>                     
                     <div class="necontent"> 
                         <div class="bg-secondary features pb-5 pt-5 text-center text-lg-start text-white"> 
-                            <form id="filterForm" class="filterForm_"> 
+                            <form id="filterForm" class="filterForm_" method="get">
                                 <div class="sort-header">Отсортировать</div>
-                                <input type="text" id="departmentInput" class="search form-control feature-search" list="department-QueryOptions" placeholder="Отделение...">
+                                <input type="text" name="departmentInput" class="search form-control feature-search" list="department-QueryOptions" placeholder="Отделение...">
                                 <datalist id="department-queryOptions"> 
                                     <option value="Вариант 1" id="dep-hint-1"> 
 
@@ -97,7 +97,7 @@
 
                                     <option value="Вариант 3" id="dep-hint-3"> 
                                 </datalist>                                 
-                                <input type="text" id="authorInput" class="search form-control feature-search" list="author-queryOptions" placeholder="Автор...">
+                                <input type="text" name="authorInput" class="search form-control feature-search" list="author-queryOptions" placeholder="Автор...">
                                 <datalist id="author-queryOptions"> 
                                     <option value="Вариант 1" id="aut-hint-1"> 
 
@@ -105,7 +105,7 @@
 
                                     <option value="Вариант 3" id="aut-hint-3"> 
                                 </datalist>                                 
-                                <input type="text" id="subjectInput" class="search form-control feature-search" list="subject-queryOptions" placeholder="Предмет..."> 
+                                <input type="text" name="subjectInput" class="search form-control feature-search" list="subject-queryOptions" placeholder="Предмет...">
                                 <datalist id="subject-queryOptions"> 
                                     <option value="Вариант 1" id="sub-hint-1"> 
 

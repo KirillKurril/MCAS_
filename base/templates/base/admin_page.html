@@ -101,10 +101,10 @@
                         </div>                         
                     </div>                     
                 </div>                 
-                <div class="create-message">
+                <form class="create-message" method="post">
                     <div class="create-message-header">
                         Создать сообщение
-</div>              <form method="post" >
+                    </div>
                     {% csrf_token %}
                     <div class="message-text">
                         <textarea name="body" id="body"></textarea>
@@ -115,13 +115,13 @@
                                 Отделение
                             </button>
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group"> 
-                                <input type="radio" class="btn-check" name="btnradio" id="groupradio1" autocomplete="off" checked> 
+                                <input type="radio" class="btn-check" name="btnradio" id="groupradio1" autocomplete="off" checked>
                                 <label class="btn btn-outline-primary" for="groupradio1">Академическое</label>                                 
 
-                                <input type="radio" class="btn-check" name="btnradio" id="groupradio2" autocomplete="off"> 
+                                <input type="radio" class="btn-check" name="btnradio" id="groupradio2" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="groupradio2">Методическое</label>                                 
 
-                                <input type="radio" class="btn-check" name="btnradio" id="groupradio3" autocomplete="off"> 
+                                <input type="radio" class="btn-check" name="btnradio" id="groupradio3" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="groupradio3">Воспитательное</label>                                 
                             </div>                             
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
@@ -134,9 +134,9 @@
                             </ul> <button type="submit" class="border-button" name="reciprocity" style="height: 2rem; padding: 1% 10%;">Отправить</button>
                         </div>                         
                     </div>
-                    </form>
-                </div>
-                <div class="bottom-butts"><a href="" class="border-button" name="reciprocity">Коллективный договор</a><a href="" class="border-button" name="reciprocity">Трудовые договора</a> 
+                </form>
+                <div class="bottom-butts"><a href="{{ collective.file_upload.url }}" class="border-button" name="reciprocity">Коллективный договор</a><a href="{{ working.file_upload.url }}" class="border-button" name="reciprocity">Трудовые договора</a>
+                    <a href="{% url 'logout' %}" class="border-button" name="reciprocity">Выйти</a>
                 </div>
             </div>
         </section>         

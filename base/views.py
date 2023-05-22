@@ -98,21 +98,34 @@ def userProfile(request, pk):
 def admin_page(request, pk):
     messages = Message.objects.all()
     admin = User.objects.get(id=pk)
+    collective = UserFiles.objects.get(user__fio=admin.fio, type='collective')
+    working = UserFiles.objects.get(user__fio=admin.fio, type='working')
     if request.method == 'POST':
-        print(1)
+        selected_option = request.POST.get('btnradio')
+
+        if selected_option == 'Академическое':
+            type = 'academy'
+        elif selected_option == 'Методическое':
+            type = 'method'
+        else:
+            type = 'treat'
         msg = Message.objects.create(
             user = request.user,
             body=request.POST.get('body'),
-            type = request.POST.get(''),
+            type = type,
         )
         return redirect('admin-page', request.user.id)
-    context = {'admin':admin, 'messages':messages}
+    context = {'admin':admin, 'messages': messages, 'working': working, 'collective': collective}
     return render(request, 'base/admin_page.html', context)
 
 
 def teacher_page(request, pk):
     teacher = User.objects.get(id=pk)
-    context = {'teacher': teacher}
+    collective = UserFiles.objects.get(user__fio=teacher.fio, type='collective')
+    passport = UserFiles.objects.get(user__fio=teacher.fio, type='passport')
+    messages = Message.objects.all()
+    context = {'teacher': teacher, 'messages': messages, 'collective': collective,
+               'passport': passport}
     return render(request, 'base/teacher_page.html', context)
 
 
@@ -207,8 +220,17 @@ def teachers(request):
 def musicLib(request):
     if request.method == 'GET':
         query = request.GET.get('queryInput')
+        department = request.GET.get('departmentInput')
+        author = request.GET.get('authorInput')
+        subject = request.GET.get('subjectInput')
         if query:
             files = File.objects.filter(file_name__icontains=query)
+        elif author:
+            files = File.objects.filter(author__contains=author)
+        elif department:
+            files = File.objects.filter(department__contains=department)
+        elif subject:
+            files = File.objects.filter(subject__contains=subject)
         else:
             files = File.objects.all()
 
