@@ -264,9 +264,9 @@ def rewards(request):
     return render(request, 'base/rewards.html', context)
 
 
-def teachersInfo(request):
-    info = About.objects.get(id = 1)
-    context = {'info':info}
+def teachersInfo(request, pk):
+    teacher = User.objects.get(id=pk)
+    context = {'teacher':teacher}
     return render(request, 'base/teacher_info.html', context)
 
 
