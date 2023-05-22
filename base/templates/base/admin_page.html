@@ -1,0 +1,149 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<html lang="en"> 
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/blocks.css' %}">
+        <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
+        <link rel="stylesheet" href="{% static 'styles/diary.css' %}">
+        <script src="{% static 'styles/js/diary.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'styles/info/admin_page.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/loading-button.css' %}">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar-1');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'ru',
+                initialView: 'dayGridMonth',
+                firstDay: 1,
+              });
+              calendar.render();
+            });
+      
+          </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar-2');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'ru',
+                initialView: 'dayGridMonth',
+                firstDay: 1,
+                
+              });
+              calendar.render();
+            });
+      
+          </script>         
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar-3');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'ru',
+                initialView: 'dayGridMonth',
+                firstDay: 1,
+                
+              });
+              calendar.render();
+            });
+      
+          </script>         
+        <title>Личный кабинет администратора</title>         
+    </head>     
+    <body class="text-muted">
+        <main> 
+            <section class="bg-secondary hero-block pb-5 position-relative text-white"> 
+                <div class="concon con-1"><a href="" class="border-button" name="individual-plan">Контроль посещения концертов и внеклассных мероприятий</a><a href="{% url 'contingent' %}" class="border-button" name="individual-plan">Контингент</a><a href="" class="border-button" name="individual-plan">Учителя и концертмейстеры</a>
+                </div>
+                <div class="concon con-2">
+                    <section class="c-1 bg-secondary pb-5 pt-5 text-center text-lg-start text-white"> 
+                        <div class="container pb-3 pt-3"> 
+                            <div class="c-header">Академические концерты</div>
+                            <div id="calendar-1"></div>
+                        </div>                         
+                    </section>                     
+                    <section class="c-1 bg-secondary pb-5 pt-5 text-center text-lg-start text-white"> 
+                        <div class="container pb-3 pt-3"> 
+                            <div class="c-header">Методическая работа</div>
+                            <div id="calendar-2"></div>
+                        </div>                         
+                    </section>                     
+                    <section class="c-1 bg-secondary pb-5 pt-5 text-center text-lg-start text-white"> 
+                        <div class="container pb-3 pt-3">
+                            <div class="c-header">Воспитательная работа</div>                             
+                            <div id="calendar-3"></div>
+                        </div>                         
+                    </section>                     
+                </div>
+            </section>             
+            <section class="hleb bg-secondary hero-block pb-5 position-relative text-white">
+                <div class="concon con-3">
+                    <div class=" table-container align-middle text-center bg-light"> 
+                        <div class="scroll-table"> 
+                            <table> 
+                                <thead> 
+                                    <tr> 
+                                        <th class="display-3 fw-bold mb-3"><h4>Сообщения от администрации</h4></th> 
+                                    </tr>                                     
+                                </thead>                                 
+                            </table>                             
+                            <div class="scroll-table-body"> 
+                                <table> 
+                                    <tbody>
+                                    {% for msg in messages %}
+                                        <tr> 
+                                            <td>{{ msg.body }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>                                     
+                                </table>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+                <div class="create-message">
+                    <div class="create-message-header">
+                        Создать сообщение
+</div>              <form method="post" >
+                    {% csrf_token %}
+                    <div class="message-text">
+                        <textarea name="body" id="body"></textarea>
+                    </div>
+                    <div class="message-button">
+                        <div class="dropdown"> 
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                Отделение
+                            </button>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group"> 
+                                <input type="radio" class="btn-check" name="btnradio" id="groupradio1" autocomplete="off" checked> 
+                                <label class="btn btn-outline-primary" for="groupradio1">Академическое</label>                                 
+
+                                <input type="radio" class="btn-check" name="btnradio" id="groupradio2" autocomplete="off"> 
+                                <label class="btn btn-outline-primary" for="groupradio2">Методическое</label>                                 
+
+                                <input type="radio" class="btn-check" name="btnradio" id="groupradio3" autocomplete="off"> 
+                                <label class="btn btn-outline-primary" for="groupradio3">Воспитательное</label>                                 
+                            </div>                             
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> 
+                                <li><a class="dropdown-item" href="">14:00</a>
+                                </li>                                 
+                                <li><a class="dropdown-item" href="">15:00</a>
+                                </li>                                 
+                                <li><a class="dropdown-item" href="">16:00</a>
+                                </li>                                 
+                            </ul> <button type="submit" class="border-button" name="reciprocity" style="height: 2rem; padding: 1% 10%;">Отправить</button>
+                        </div>                         
+                    </div>
+                    </form>
+                </div>
+                <div class="bottom-butts"><a href="" class="border-button" name="reciprocity">Коллективный договор</a><a href="" class="border-button" name="reciprocity">Трудовые договора</a> 
+                </div>
+            </div>
+        </section>         
+    </main>     
+    <script src="{% static 'styles/assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'styles/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'styles/fc/packages/moment/index.global.min.js' %}"></script>
+    <script src="{% static 'styles/fc/packages' %}"></script>
+</body> 
+{% endblock content %}

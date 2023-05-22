@@ -59,7 +59,6 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
 
-
 class New(models.Model):
     title = models.CharField(max_length=256, verbose_name="Название статьи")
     description = RichTextField(null = False, blank = False, max_length = 100000, verbose_name="Подробное описание статьи")
@@ -77,10 +76,17 @@ class About(models.Model):
     def __str__(self):
         return self.description
 
+
 class Message(models.Model):
+    TYPE = [
+        ('academy', 'Academ'),
+        ('method', 'Method'),
+        ('treat', 'Treat'),
+    ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    type = models.CharField(choices=TYPE, default='academy', max_length=20)
 
     def __str__(self):
         return self.body
@@ -93,13 +99,19 @@ class File(models.Model):
     author = models.CharField(max_length=50, default='default_author')
     subject = models.CharField(max_length=50, default='default_subject')
 
-
     def __str__(self):
         return self.file_name
 
 
 class UserFiles(File):
+    DOCUMENT_TYPES = [
+        ('passport', 'Passport'),
+        ('vzaim', 'Vzaim'),
+        ('collective', 'Collective'),
+        ('working', 'Working'),
+    ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    type = models.CharField(max_length=20, choices=DOCUMENT_TYPES, default='passport')
 
     def __str__(self):
         return self.file_name

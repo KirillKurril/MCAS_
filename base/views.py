@@ -95,6 +95,27 @@ def userProfile(request, pk):
     return render(request, 'base/profile.html', context)
 
 
+def admin_page(request, pk):
+    messages = Message.objects.all()
+    admin = User.objects.get(id=pk)
+    if request.method == 'POST':
+        print(1)
+        msg = Message.objects.create(
+            user = request.user,
+            body=request.POST.get('body'),
+            type = request.POST.get(''),
+        )
+        return redirect('admin-page', request.user.id)
+    context = {'admin':admin, 'messages':messages}
+    return render(request, 'base/admin_page.html', context)
+
+
+def teacher_page(request, pk):
+    teacher = User.objects.get(id=pk)
+    context = {'teacher': teacher}
+    return render(request, 'base/teacher_page.html', context)
+
+
 @login_required(login_url = "/login")
 def createNew(request):
     form = NewForm()
@@ -267,9 +288,16 @@ def rewards(request):
 def teachersInfo(request, pk):
     teacher = User.objects.get(id=pk)
     students = User.objects.get(id=pk).students.all()
-    passport = UserFiles.objects.get(user__fio=teacher.fio)
-    context = {'teacher':teacher, 'students':students, 'passport':passport}
+    passport = UserFiles.objects.get(user__fio=teacher.fio, type='passport')
+    vzaim = UserFiles.objects.get(user__fio = teacher.fio, type='vzaim')
+    context = {'teacher':teacher, 'students':students, 'passport':passport, 'vzaim':vzaim}
     return render(request, 'base/teacher_info.html', context)
+
+
+def teacher_edit(request, pk):
+    teacher = User.objects.get(id=pk)
+    context = {'teacher':teacher}
+    return render(request, 'base/teacher_edit.html', context)
 
 
 def piano_department(request):

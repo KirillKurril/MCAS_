@@ -1,0 +1,182 @@
+.main-content {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.row{
+    color: white;
+    display: flex;
+    width: 95%;
+}
+
+.messages{
+    border-radius: 5%;
+    background: linear-gradient(to top, #38b13e 0%, #24681c 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 65%;
+    height: auto; 
+    
+}
+
+.booking{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 30%;
+    margin-left: 5%;
+    border-radius: 5%;
+    height: 1;
+    background: linear-gradient(to top, #38b13e 0%, #24681c 100%);
+}
+
+.messages div{
+    display: flex;
+    justify-content: center;
+}
+
+.booking div{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.docs a{
+margin-bottom: 10%;;
+}
+
+.table-container{
+    border-radius: 5%;
+
+    margin: 5%;
+    padding: 3%;
+}
+
+.messages-header h1{
+    font-size: 2rem;
+}
+
+.scroll-table{
+    width: 100%;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.scroll-table-body {
+	height: 300px;
+	overflow-x: auto;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.scroll-table table {
+    margin-bottom: 5%;
+
+	width:100%;
+	table-layout: fixed;
+	border: none;
+}
+.scroll-table thead th {
+	font-weight: bold;
+	text-align: center;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.scroll-table tbody td {
+	text-align: left;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+.scroll-table tbody tr:nth-child(even){
+	background: #f3f3f3;
+}
+ 
+/* Стили для скролла */
+::-webkit-scrollbar {
+	width: 6px;
+} 
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.great-calendar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.calal{
+    width: 90%;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+}
+
+.calendar{
+   width: 100%;
+}
+
+.students-buttons{
+    justify-content: space-between  !important;
+    width: 90%;
+    margin: 5%;
+    margin-bottom: 10%;
+    display: flex;
+    display: flex;
+}
+
+.students-buttons a{
+    font-size: 0.75rem;
+}
+
+.general-buttons{
+    justify-content: end;
+
+}
+
+.radio-buttins{
+    text-align: center;
+}
+
+.booking-header{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.booking-content{
+    padding: 10%;
+    width: 95%;
+    border: 1px solid #ddd;
+    border-radius: 10%;
+    margin-bottom: 80%;
+}
+
+.general-buttons{
+    margin-top: 28% !important; 
+    width: 95%;
+}
+
+.general-buttons a{
+    margin-bottom: 5%;
+}

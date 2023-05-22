@@ -11,8 +11,13 @@
                             </li>
                             <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'music-library' %}">Музыкальная библиотека</a>
                             </li>
-                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'user-profile' user.id %}">Личный кабинет</a>
+                            {% if user.status == "admin"%}
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'admin-page' user.id %}">Личный кабинет</a>
                             </li>
+                            {% elif user.status == 'teacher'%}
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'teacher-page' user.id %}">Личный кабинет</a>
+                            </li>
+                            {% endif %}
                             <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'news' %}">Новости</a>
                             </li>
                             <li class="nav-item">

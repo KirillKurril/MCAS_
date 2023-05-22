@@ -477,8 +477,8 @@
                             <div class="href-buttons">
                                 <a href="" class="border-button" name="class-log ">Журнал</a>
                                 <a href="{{ passport.file_upload.url }}" class="border-button" name="methodological-passport">Методический паспорт</a>
-                                <a href="" class="border-button" name="reciprocity">Взаимопосещаемость</a>
-                                <a href="" class="border-button" name="edit">Редактировать профиль</a>
+                                <a href="{{ vzaim.file_upload.url }}" class="border-button" name="reciprocity">Взаимопосещаемость</a>
+                                <a href="{% url 'teacher-edit' teacher.id %}" class="border-button" name="edit">Редактировать профиль</a>
                             </div>
                             </div>
                         </div>
