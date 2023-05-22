@@ -266,7 +266,9 @@ def rewards(request):
 
 def teachersInfo(request, pk):
     teacher = User.objects.get(id=pk)
-    context = {'teacher':teacher}
+    students = User.objects.get(id=pk).students.all()
+    passport = UserFiles.objects.get(user__fio=teacher.fio)
+    context = {'teacher':teacher, 'students':students, 'passport':passport}
     return render(request, 'base/teacher_info.html', context)
 
 

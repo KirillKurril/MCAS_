@@ -34,6 +34,7 @@
                     </div>
                 {% endfor %}
             {% endif %}
+            <a href="{% url 'file-uupload' %}">Загрузить новый файл для пользователя</a>
             <a href="{% url 'contingent' %}">Контингент</a>
             <a href="{% url 'logout' %}">Выйти</a>
         </form>

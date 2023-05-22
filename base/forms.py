@@ -65,7 +65,7 @@ class FileUploadForm(forms.ModelForm):
 class FileUUploadForm(forms.ModelForm):
     class Meta:
         model = UserFiles
-        fields = '__all__'
+        fields = ['user', 'file_name', 'file_upload']
 
 
 class EventCreationForm(forms.ModelForm):

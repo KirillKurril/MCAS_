@@ -43,7 +43,6 @@ urlpatterns = [
     path('choir-events/', views.get_choir, name='choir-events'),
     path('theory-events/', views.get_theory, name='theory-events'),
 
-    #path('events/<str:pk>', views.get_uni, name='events'),
     path('new-event/', views.new_event, name='new-event'),
     path('contingent/', views.contingent, name='contingent'),
 

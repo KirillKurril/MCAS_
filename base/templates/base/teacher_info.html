@@ -21,7 +21,7 @@
                     <div class="row-1">
                         <div class="photo-column">
                             <div class="image-container">
-                                <img src="https://img.quizur.com/f/img6283e5617d1347.87197052.jpg?lastEdited=1652811111" alt="Image" name="student-photo">
+                                <img src="{{ teacher.avatar.url }}" alt="{% static 'images/profile-pictures/default.jpg' %}" name="student-photo">
                             </div>
                             
                         </div>
@@ -30,23 +30,19 @@
                                 <tbody>
                                     <tr>
                                         <th>ФИО:</th>
-                                        <th name="name">Чирец Флоппа Геннадьевна</th>
+                                        <th name="name">{{ teacher.fio }}</th>
                                     </tr>
                                     <tr>
                                         <th>Отделение:</th>
-                                        <th name="department">Фортепианное</th>
+                                        <th name="department">{{ teacher.department_name }}</th>
                                     </tr>
                                     <tr>
                                         <th>Инструмент:</th>
-                                        <th name="instrument">фортепиано</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Имя преподавателя по специальности</th>
-                                        <th name="teacher-name">Дмитрук Наталья Валерьевна</th>
+                                        <th name="instrument">{{ teacher.instrument_name }}</th>
                                     </tr>
                                     <tr>
                                         <th>Контактный телефон</th>
-                                        <th name="teacher-number">+375(77)88-75-951</th>
+                                        <th name="teacher-number">{{ teacher.user_number }}</th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -435,82 +431,14 @@
                                             <th scope="col" class="align-middle">Ученики</th> 
                                         </tr>                                     
                                     </thead>                                 
-                                    <tbody>                        
+                                    <tbody>
+                                        {% for student in students %}
                                         <tr> 
                                             <td>
-                                                <a href="">Александр Иванов</a>
+                                                <a href="{% url 'student-info' student.id %}">{{ student.fio }}</a>
                                             </td> 
                                         </tr>
-                                        <tr> 
-                                            <td>
-                                                <a href="">Екатерина Смирнова</a>
-                                            </td> 
-                                        </tr>                                     
-                                        <tr> 
-                                            <td>
-                                                <a href="">Дмитрий Петров</a>
-                                            </td> 
-                                        </tr> 
-                                        <tr> 
-                                            <td>
-                                                <a href="">Ольга Соколова</a>
-                                            </td> 
-                                        </tr> 
-                                        <tr> 
-                                            <td>
-                                                <a href="">Андрей Федоров</a>
-                                            </td> 
-                                        </tr>   
-                                        <tr>
-                                            <td>
-                                                <a href="">Наталья Михайлова</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Иван Кузнецов</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Мария Новикова</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Сергей Морозов</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Юлия Волкова</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Алексей Лебедев</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Елена Семенова</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Павел Егоров</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Анастасия Павлова</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="">Михаил Козлов</a>
-                                            </td>
-                                        </tr>
+                                        {% endfor %}
                                     </tbody>                                 
                                 </table>
                             </div>
@@ -522,36 +450,13 @@
                                         </tr>                                     
                                     </thead>                                 
                                     <tbody>                        
-                                        <tr> 
+                                        {% for student in students %}
+                                        <tr>
                                             <td>
-                                                <a href="">253505</a>
-                                            </td> 
+                                                <!--<a href="{% url 'student-info' student.id %}">{{ student.fio }}</a>-->
+                                            </td>
                                         </tr>
-                                        <tr> 
-                                            <td>
-                                                <a href="">253504</a>
-                                            </td> 
-                                        </tr>                                     
-                                        <tr> 
-                                            <td>
-                                                <a href="">253501</a>
-                                            </td> 
-                                        </tr> 
-                                        <tr> 
-                                            <td>
-                                                <a href="">253503</a>
-                                            </td> 
-                                        </tr> 
-                                        <tr> 
-                                            <td>
-                                                <a href="">253506</a>
-                                            </td> 
-                                        </tr>
-                                        <tr> 
-                                            <td>
-                                                <a href="">253502</a>
-                                            </td> 
-                                        </tr>                                     
+                                        {% endfor %}
                                     </tbody>                                 
                                 </table>
                             </div>  
@@ -564,26 +469,14 @@
                                     </thead>                                 
                                     <tbody>                        
                                         <tr> 
-                                            <td>Золотая медаль "Лучший преподаватель года"</td> 
+                                            <td>{{ teacher.rewards }}</td>
                                         </tr>
-                                        <tr> 
-                                            <td>Сертификат "Выдающийся вклад в образование"</td> 
-                                        </tr>                                     
-                                        <tr> 
-                                            <td>Почетный диплом "За высокий профессионализм и отличные результаты"</td> 
-                                        </tr> 
-                                        <tr> 
-                                            <td>Премия "Преподаватель-победитель" за достижения в культурных исследованиях</td> 
-                                        </tr> 
-                                        <tr> 
-                                            <td>Знак отличия "За вклад в развитие студенческой среды и активное воспитательное воздействие"</td> 
-                                        </tr>                                     
                                     </tbody>                                 
                                 </table>
                             </div>
                             <div class="href-buttons">
                                 <a href="" class="border-button" name="class-log ">Журнал</a>
-                                <a href="" class="border-button" name="methodological-passport">Методический паспорт</a>
+                                <a href="{{ passport.file_upload.url }}" class="border-button" name="methodological-passport">Методический паспорт</a>
                                 <a href="" class="border-button" name="reciprocity">Взаимопосещаемость</a>
                                 <a href="" class="border-button" name="edit">Редактировать профиль</a>
                             </div>

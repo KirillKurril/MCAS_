@@ -53,6 +53,7 @@ class User(AbstractUser):
                                verbose_name="Загрузите аватар для профиля")
     groups = models.ManyToManyField(GroupNumber, blank=True)
     subjects = models.ManyToManyField(Subject, blank=True)
+    students = models.ManyToManyField('self', symmetrical=False, blank=True, limit_choices_to={'status': 'student'})
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
