@@ -72,7 +72,6 @@ class User(AbstractUser):
     groups = models.ManyToManyField(GroupNumber, blank=True)
     subjects = models.ManyToManyField(Subject, blank=True)
     students = models.ManyToManyField('self', symmetrical=False, blank=True, limit_choices_to={'status': 'student'})
-    events = models.ManyToManyField(Event)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
@@ -80,7 +79,7 @@ class User(AbstractUser):
 
 class Group(models.Model):
     students = models.ManyToManyField(User, limit_choices_to={'status': 'student'})
-    num = models.ForeignKey(GroupNumber)
+    num = models.ForeignKey(GroupNumber, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.num

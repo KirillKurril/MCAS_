@@ -133,6 +133,31 @@ def group_info(request, pk):
 
 
 def create_student(request):
+    form = RegistrationForm()
+
+    if request.method == 'POST':
+        print('yes')
+        fio = request.POST.get('name')
+        department = request.POST.get('department')
+        instrument = request.POST.get('instrument')
+        teacher_name = request.POST.get('teacher-name')
+        teacher_number = request.POST.get('teacher-number')
+        number = request.POST.get('number')
+        learning_duration = request.POST.get('learning-duration')
+        grade = request.POST.get('grade')
+        parent_name_1 = request.POST.get('parent-name-1')
+        parent_number_1 = request.POST.get('parent-number-1')
+        parent_name_2 = request.POST.get('parent-name-2')
+        parent_number_2 = request.POST.get('parent-number-2')
+        awards = request.POST.get('awards')
+        avatar = request.POST.get('student-photo')
+        password = request.POST.get('password')
+        user = User(fio=fio, department_name=department, instrument_name=instrument, teacher_name=teacher_name, teacher_number=teacher_number,
+                                user_number=number, years=learning_duration, start_year=grade, parent_first_name=parent_name_1, parent_first_number=parent_number_1,
+                                parent_second_name=parent_name_2, parent_second_number=parent_number_2, rewards=awards, avatar=avatar, password=password, username=fio)
+        user.save()
+        if user:
+            return render(request, 'base/home.html')
     return render(request, 'base/create_student.html')
 
 

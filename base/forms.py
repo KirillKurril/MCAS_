@@ -1,9 +1,14 @@
 from django.forms import ModelForm
 from django import forms
-from .models import New, User, About, File, Event, Task, UserFiles
+from .models import New, User, About, File, Event, Task, UserFiles, Group
 from ckeditor.widgets import CKEditorWidget
 from django.contrib.auth.forms import UserCreationForm
 #from ckeditor.fields import RichTextField
+
+class GroupForm(ModelForm):
+    class Meta:
+        model = Group
+        fields='__all__'
 
 
 class NewForm(ModelForm):
@@ -35,6 +40,7 @@ class RegistrationForm(UserCreationForm):
             'parent_second_name',
             'parent_second_number',
             'avatar',
+            'rewards',
             'status',
             'password1',
             'password2',

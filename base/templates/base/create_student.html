@@ -14,7 +14,8 @@
     <body class="text-muted"> 
         <main>
             <section class=" main-content cbg-light pb-5 pt-5"> 
-                <div class="row text-white"> 
+                <form method="post" class="row text-white">
+                    {% csrf_token %}
                     <div class="main-info"> 
                         <div class="photo-column"> 
                             <div class="image-container" style="margin-bottom: 20%;"> 
@@ -75,9 +76,9 @@
                                         </th>                                         
                                     </tr>                                     
                                     <tr> 
-                                        <th>Год обучения</th> 
+                                        <th>Год начала обучения</th>
                                         <th>
-                                            <input type="text" name="grade">
+                                            <input type="date" name="grade">
                                         </th>                                         
                                     </tr>                                     
                                     <tr> 
@@ -95,7 +96,7 @@
                                     <tr> 
                                         <th>Имя законного представителя</th> 
                                         <th>
-                                            <input type="text" name="parent-name-1">
+                                            <input type="text" name="parent-name-2">
                                         </th>                                         
                                     </tr>                                     
                                     <tr> 
@@ -103,7 +104,13 @@
                                         <th>
                                             <input type="text" name="parent-number-2">
                                         </th>                                         
-                                    </tr>                                     
+                                    </tr>
+                                    <tr>
+                                        <th>Пароль</th>
+                                        <th>
+                                            <input type="password" name="password">
+                                        </th>
+                                    </tr>
                                 </tbody>                                 
                             </table>                             
                         </div>                         
@@ -124,30 +131,11 @@
                                     </tbody>                                     
                                 </table>
                             </div>  
-                            <a href="" class="border-button" name="add-reward" style="padding-top: 2%; padding-bottom: 2%;">Добавить награду</a>                                   
-                            <div class="attendance"> 
-                                <table> 
-                                    <thead> 
-                                        <tr> 
-                                            <th colspan="2" name="attendance">Контроль посещения концертов и внешкольных мероприятий</th>
-                                        </tr>                                         
-                                    </thead>                                     
-                                    <tbody> 
-                                        <tr style="height: 7rem;"> 
-                                            <td style="width: 35%;">
-                                                <input type="text" name="date">
-                                            </td>                                             
-                                            <td style="width: 65%;"><textarea name="ivent"></textarea></td> 
-                                        </tr>                                         
-                                    </tbody>                                     
-                                </table> 
-                            </div>
-                            <a href="" class="border-button" name="add-ivent" style="padding-top: 2%; padding-bottom: 2%;">Добавить событие</a>     
-                            <a href="" class="border-button" name="accept" style="margin-top: 10%;">Создать профиль учащегося</a>                                                                 
+                            <button type="submit" class="border-button" name="accept" style="margin-top: 10%;">Создать профиль учащегося</button>
                             <a href="" class="border-button" name="back" style="margin-top: 66%;">Вернуться к профилю</a>                             
                         </div>                         
                     </div>                     
-                </div>                 
+                </form>
             </section>             
         </main>         
     </body>     
