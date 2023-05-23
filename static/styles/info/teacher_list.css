@@ -1,0 +1,44 @@
+.scroll-table-body{
+    border-radius: 4%;
+    border: 1px solid dimgray;
+}
+
+.search-engine{
+    width: 100%;
+    flex-direction: row;
+}
+
+.class{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.dib{
+    width: 80%;
+}
+
+.dropdown{
+    width: 20%;
+    border-radius: 5%;
+}
+
+.contain {
+    display: flex;
+    width: 100%;
+}
+   
+.search-input {
+    flex-grow: 1;
+    margin-right: 10px; /* Добавьте отступ справа между полем поиска и кнопкой, при необходимости */
+}
+
+.border-button{
+    width: 100%;
+    color: green;
+    border: 1px solid green;
+}
+
+.border-button:hover{
+    color: lawngreen;
+    border: 1px solid lawngreen;
+}

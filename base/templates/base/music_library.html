@@ -39,9 +39,8 @@
             </section>             
             <section class=" main-content"> 
                 <div class="row"> 
-                    <div class="content"> 
-                        <div class="search-row">
-                            <form action="" method="GET" class="search-form">
+                    <div class="content">
+                        <form method="GET" class="search-row">
                             <input type="text" name="queryInput" class="search form-control" list="queryOptions" placeholder="Введите название книги...">
                             <datalist id="queryOptions"> 
                                 <option value="Вариант 1" id="gen-hint-1"> 
@@ -51,8 +50,7 @@
                                 <option value="Вариант 3" id="gen-hint-3"> 
                             </datalist>
                             <button type="submit" class="floating-button search-butt" >Поиск</button>
-                            </form>
-                        </div>
+                        </form>
                         {% for file in files %}
                         <div class="answer-row search-row">
                             <div class="col-1">

@@ -1,7 +1,65 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
-    {% for teacher in teacher_list %}
-    <a href="{% url 'user-profile' teacher.id %}">{{ teacher.first_name }}</a>
-    {% endfor %}
-{% endblock content %}
+<html lang="en"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <meta name="description" content=""> 
+        <meta name="author" content="">
+        <link href="{% static 'styles/bootstrap_theme/bootstrap.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'styles/blocks.css' %}">
+        <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
+        <link rel="stylesheet" href="{% static 'styles/info/class_journal.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/loading-button.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/teacher_page.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/loading-button.css'%}">
+        <link rel="stylesheet" href="{% static 'styles/info/uno_class.css'%}">
+        <script src="{% static 'styles/info/journal.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'styles/info/cool-button.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/nice-butt-on.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/info/teacher_list.css' %}">
+        <title>Список учителей</title>         
+    </head>     
+    <body class="text-muted">
+        <main class="bg-light" style="display: flex;"> 
+            <div class="container"> 
+                <div class="list_table"> 
+                    <div class="scroll-table">
+                        <div class="class">    
+                                    <div class="search-engine">
+                                    <div class="mb-3"> 
+                                        <label for="formDatalists64" class="form-label">Список учителей</label>                                         
+                                        <input class="form-control" list="datalistOptions" id="formDatalists64" placeholder="Напишите имя преподавателя...">                                       
+                                    </div>
+                                    </div>
+                        </div>                         
+                        <div class="scroll-table-body">
+                            <table>
+                                <tbody>
+                                {% for student in students %}
+                                  <tr>
+                                    <td><a href="{% url 'student-info' student.id %}">student.fio</a></td>
+                                  </tr>
+                                  <!-- <tr>
+                                    <td>
+                                      <a href="" class="border-button" name="delete">Добавить учителя</a>  
+                                    </td>
+                                  </tr> -->
+                                {% endfor %}
+                                  </tbody>
+                            </table>
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </main>         
+        <script src="{% static 'styles/assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'styles/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'styles/fc/packages/moment/index.global.min.js'%}"></script>
+        <script src="{% static 'styles/fc/packages' %}"></script>
+    </body>     
+</html>
+{% enblock content%}

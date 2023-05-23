@@ -1,0 +1,14 @@
+.form-label{
+    text-align: center;
+    margin: 5%;
+    font-size: 2.5rem;
+}
+
+.info{
+    width: 100%;
+    margin-bottom: 20%;
+}
+
+.sdc th{
+    border: none;
+}

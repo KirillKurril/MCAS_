@@ -109,6 +109,7 @@ class UserFiles(File):
         ('vzaim', 'Vzaim'),
         ('collective', 'Collective'),
         ('working', 'Working'),
+        ('individual', 'Индивидуальный план')
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=20, choices=DOCUMENT_TYPES, default='passport')
@@ -125,6 +126,9 @@ class Event(models.Model):
         ('string-folk', 'Струнно-народное'),
         ('choir', 'Хоровое'),
         ('theory', 'Теоретическое'),
+        ('academy', 'Академические концерты'),
+        ('method', 'Методическая работа'),
+        ('treat', 'Воспитательная работа'),
     )
 
     title = models.CharField(max_length=200, null=False)

@@ -1,0 +1,190 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <!-- ----------------------------------------------------------------------------- -->         
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <meta name="description" content=""> 
+        <meta name="author" content=""> 
+        <!-- Bootstrap core CSS -->         
+        <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"> 
+        <!-- Custom styles for this template -->         
+        <link rel="stylesheet" href="blocks.css"> 
+        <link href="style.css" rel="stylesheet"> 
+        <!-- ----------------------------------------------------------------------------- -->         
+        <link rel="stylesheet" href="./piano-style.css"> 
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
+        <link rel="stylesheet" href="./fc/style.css"> 
+        <script src="./js/main.js"></script>         
+        <link rel="stylesheet" href="student_edit.css"> 
+        <link rel="stylesheet" href="loading-button.css"> 
+        <title>Информация об учащемся</title>         
+    </head>     
+    <body class="text-muted"> 
+        <!-- ----------------------------------------------------------------------------- -->         
+        <header class="bg-secondary"> 
+            <nav class="navbar navbar-dark navbar-expand-lg pb-3 pt-3 shadow-none"> 
+                <div class="container"> <a class="navbar-brand text-white" href="#"> <img src="./sources/emblem.png" alt="Логотип" class="me-2"> <span class="align-middle fw-bold h4 ms-1">МДШИ</span></a> 
+                    <button class="navbar-toggler rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown-2" aria-controls="navbarNavDropdown-2" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
+                    </button>                     
+                    <div class="collapse navbar-collapse " id="navbarNavDropdown-2"> 
+                        <ul class="ms-auto navbar-nav"> 
+                            <li class="nav-item"> <a class="active nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" aria-current="page" href="./index.html">Главная</a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Музыкальная библиотека</a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Личный кабинет</a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Новости</a> 
+                            </li>                             
+                            <li class="nav-item"> 
+</li>                             
+                            <li class="nav-item"> 
+</li>                             
+                        </ul>                         
+                    </div>                     
+                </div>                 
+            </nav>             
+        </header>         
+        <!-- ----------------------------------------------------------------------------- -->         
+        <main> 
+            <section class=" main-content cbg-light pb-5 pt-5"> 
+                <div class="row text-white"> 
+                    <div class="main-info"> 
+                        <div class="photo-column"> 
+                            <div class="image-container" style="margin-bottom: 20%;"> 
+                                <img src="https://img.quizur.com/f/img6283e5617d1347.87197052.jpg?lastEdited=1652811111" alt="Image" name="student-photo"> 
+                                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+                            </div>                             
+                            <div class="example-2">
+                                <div class="form-group">
+                                    <input type="file" name="file" id="file" class="input-file">
+                                    <label for="file" class="btn btn-tertiary js-labelFile"><i class="icon fa fa-check"></i><span class="js-fileName">Загрузить файл</span>
+                                    </label>
+                                </div>
+                            </div>                             
+                        </div>                         
+                        <div class="table-column"> 
+                            <table> 
+                                <tbody> 
+                                    <tr> 
+                                        <th>ФИО:</th> 
+                                        <th> 
+                                            <input type="text" name="name">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Отделение:</th> 
+                                        <th>
+                                            <input type="text" name="department">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Инструмент:</th> 
+                                        <th>
+                                            <input type="text" name="instrument">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Имя преподавателя по специальности</th> 
+                                        <th>
+                                            <input type="text" name="teacher-name">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Контактный телефон преподавателя</th> 
+                                        <th>
+                                            <input type="text" name="teacher-number">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Контактный телефон учащегося</th> 
+                                        <th>
+                                            <input type="text" name="number">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Срок обучения</th> 
+                                        <th>
+                                            <input type="text" name="learning-duration">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Год обучения</th> 
+                                        <th>
+                                            <input type="text" name="grade">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Имя законного представителя</th> 
+                                        <th>
+                                            <input type="text" name="parent-name-1">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Телефон законного представителя</th> 
+                                        <th>
+                                            <input type="text" name="parent-number-1">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Имя законного представителя</th> 
+                                        <th>
+                                            <input type="text" name="parent-name-1">
+                                        </th>                                         
+                                    </tr>                                     
+                                    <tr> 
+                                        <th>Телефон законного представителя</th> 
+                                        <th>
+                                            <input type="text" name="parent-number-2">
+                                        </th>                                         
+                                    </tr>                                     
+                                </tbody>                                 
+                            </table>                             
+                        </div>                         
+                    </div>                     
+                    <div class="add-info"> 
+                        <div class="add-column"> 
+                            <div class="awards" style="margin-top: 5%;"> 
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th>Список наград и конкурсов</th> 
+                                        </tr>                                         
+                                    </thead>                                     
+                                    <tbody> 
+                                        <tr> 
+                                            <td name="awards"><textarea></textarea></td> 
+                                        </tr>                                         
+                                    </tbody>                                     
+                                </table>
+                            </div>  
+                            <a href="" class="border-button" name="add-reward" style="padding-top: 2%; padding-bottom: 2%;">Добавить награду</a>                                   
+                            <div class="attendance"> 
+                                <table> 
+                                    <thead> 
+                                        <tr> 
+                                            <th colspan="2" name="attendance">Контроль почещения концертов и внешкольных мероприятий</th> 
+                                        </tr>                                         
+                                    </thead>                                     
+                                    <tbody> 
+                                        <tr style="height: 7rem;"> 
+                                            <td style="width: 35%;">
+                                                <input type="text" name="date">
+                                            </td>                                             
+                                            <td style="width: 65%;"><textarea name="ivent"></textarea></td> 
+                                        </tr>                                         
+                                    </tbody>                                     
+                                </table> 
+                            </div>
+                            <a href="" class="border-button" name="add-ivent" style="padding-top: 2%; padding-bottom: 2%;">Добавить событие</a>     
+                            <a href="" class="border-button" name="accept" style="margin-top: 10%;">Создать профиль учащегося</a>                                                                 
+                            <a href="" class="border-button" name="back" style="margin-top: 66%;">Вернуться к профилю</a>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </section>             
+        </main>         
+    </body>     
+</html>

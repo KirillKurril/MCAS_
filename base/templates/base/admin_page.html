@@ -101,10 +101,10 @@
                         </div>                         
                     </div>                     
                 </div>                 
-                <div class="create-message">
+                <form method="post" class="create-message">
                     <div class="create-message-header">
                         Создать сообщение
-</div>              <form method="post" >
+                    </div>
                     {% csrf_token %}
                     <div class="message-text">
                         <textarea name="body" id="body"></textarea>
@@ -134,9 +134,8 @@
                             </ul> <button type="submit" class="border-button" name="reciprocity" style="height: 2rem; padding: 1% 10%;">Отправить</button>
                         </div>                         
                     </div>
-                    </form>
-                </div>
-                <div class="bottom-butts"><a href="" class="border-button" name="reciprocity">Коллективный договор</a><a href="" class="border-button" name="reciprocity">Трудовые договора</a> 
+                </form>
+                <div class="bottom-butts"><a href="" class="border-button" name="reciprocity">Коллективный договор</a><a href="" class="border-button" name="reciprocity">Трудовые договора</a> <a href="{% url 'register' %}" class="border-button" name="create-new">Создать сущность</a>
                 </div>
             </div>
         </section>         

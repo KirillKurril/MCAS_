@@ -78,6 +78,11 @@ def registerPage(request):
     return render(request, 'base/login_register.html', {'form' : form})
 
 
+def delete_user(request, pk):
+    user = User.objects.get(id=pk)
+    user.delete()
+    return render(request, 'base/admin_page.html')
+
 @login_required(login_url='/login')
 def userProfile(request, pk):
     user = User.objects.get(id = pk)
@@ -382,6 +387,7 @@ def student_info(request, pk):
     current_year = datetime.now().year
     start_year = student.start_year.year
     grade = current_year - start_year + 1
+    plan = UserFiles.objects.get(user__fio=student.fio)
     if datetime.now().month < 9:
         grade -= 1
     context = {"student": student, "groups":groups, "grade":grade}

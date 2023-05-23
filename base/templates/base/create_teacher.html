@@ -1,0 +1,523 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <!-- ----------------------------------------------------------------------------- -->         
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+        <meta name="description" content=""> 
+        <meta name="author" content=""> 
+        <!-- Bootstrap core CSS -->         
+        <link href="bootstrap_theme/bootstrap.css" rel="stylesheet" type="text/css"> 
+        <!-- Custom styles for this template -->         
+        <link rel="stylesheet" href="blocks.css"> 
+        <link href="style.css" rel="stylesheet"> 
+        <!-- ----------------------------------------------------------------------------- -->         
+        <link rel="stylesheet" href="./piano-style.css"> 
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
+        <link rel="stylesheet" href="./fc/style.css"> 
+        <script src="./js/main.js"></script>         
+        <link rel="stylesheet" href="student_info.css"> 
+        <link rel="stylesheet" href="loading-button.css">
+        <link rel="stylesheet" href="./diary.css"> 
+        <link rel="stylesheet" href="teacher_info.css">
+        <title>Создать профиль преподавателя</title>         
+    </head>     
+    <body class="text-muted"> 
+        <!-- ----------------------------------------------------------------------------- -->         
+        <header class="bg-secondary"> 
+            <nav class="navbar navbar-dark navbar-expand-lg pb-3 pt-3 shadow-none"> 
+                <div class="container"> <a class="navbar-brand text-white" href="#"> <img src="./sources/emblem.png" alt="Логотип" class="me-2"> <span class="align-middle fw-bold h4 ms-1">МДШИ</span></a> 
+                    <button class="navbar-toggler rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown-2" aria-controls="navbarNavDropdown-2" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
+                    </button>                     
+                    <div class="collapse navbar-collapse " id="navbarNavDropdown-2"> 
+                        <ul class="ms-auto navbar-nav"> 
+                            <li class="nav-item"> <a class="active nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" aria-current="page" href="./index.html">Главная</a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Музыкальная библиотека</a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Личный кабинет</a> 
+                            </li>                             
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="#">Новости</a> 
+                            </li>                             
+                            <li class="nav-item"> 
+</li>                             
+                            <li class="nav-item"> 
+</li>                             
+                        </ul>                         
+                    </div>                     
+                </div>                 
+            </nav>             
+        </header>         
+        <!-- ----------------------------------------------------------------------------- -->         
+        <main>              
+            <section class=" main-content cbg-light pb-5 pt-5"> 
+                <div class="row text-white"> 
+                   <div class="main-info">
+                    <div class="row-1">
+                        <div class="photo-column"> 
+                            <div class="image-container" style="margin-bottom: 20%;"> 
+                                <img src="https://img.quizur.com/f/img6283e5617d1347.87197052.jpg?lastEdited=1652811111" alt="Image" name="student-photo"> 
+                                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+                            </div>                             
+                            <div class="example-2">
+                                <div class="form-group">
+                                    <input type="file" name="file" id="file" class="input-file">
+                                    <label for="file" class="btn btn-tertiary js-labelFile"><i class="icon fa fa-check"></i><span class="js-fileName">Загрузить файл</span>
+                                    </label>
+                                </div>
+                            </div>                             
+                        </div> 
+                        <div class="table-column">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>ФИО:</th>
+                                        <th name="name"><input type="text"/></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Отделение:</th>
+                                        <th name="department"><input type="text"/></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Инструмент:</th>
+                                        <th name="instrument"><input type="text"/></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Контактный телефон</th>
+                                        <th name="teacher-number"><input type="text"/></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <section class="pb-5 pt-5 teachers" style="display: flex;"> 
+                            <div class="tables">
+                                <div class="tables-header" id="thr">Расписание</div>
+                                <div class="s_table">
+                                    <h3>Понедельник</h3>
+                                    <div class="table-responsive">
+                                        <table class="table"> 
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 60%;">
+                                            </colgroup>
+                                            <thead> 
+                                                <tr> 
+                                                    <th scope="col" class="text-center">Кабинет</th> 
+                                                    <th scope="col" class="text-center">Время</th> 
+                                                    <th scope="col" class="text-center">Имя учащегося/группы</th> 
+                                                </tr>                                     
+                                            </thead>                                 
+                                            <tbody> 
+                                                <tr name="sc-1-1"> 
+                                                    <td name="sc-1-1-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-1-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-1-3" class="text-center"><input type="text"/></td> 
+                                                </tr>                                     
+                                                <tr name="sc-1-2"> 
+                                                    <td name="sc-1-2-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-2-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-2-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-1-3"> 
+                                                    <td name="sc-1-3-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-3-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-3-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-1-4"> 
+                                                    <td name="sc-1-4-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-4-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-4-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-1-5"> 
+                                                    <td name="sc-1-5-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-5-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-5-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-1-6"> 
+                                                    <td name="sc-1-6-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-6-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-6-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-1-7"> 
+                                                    <td name="sc-1-7-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-7-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-7-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-1-8"> 
+                                                    <td name="sc-1-8-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-8-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-1-8-3" class="text-center"><input type="text"/></td> 
+                                                </tr>                                     
+                                            </tbody>                                 
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="s_table">
+                                    <h3>Вторник</h3>
+                                    <div class="table-responsive text-center">
+                                        <table class="table"> 
+                                           <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 60%;">
+                                            </colgroup>
+                                            <thead> 
+                                                <tr> 
+                                                    <th scope="col" class="text-center">Кабинет</th> 
+                                                    <th scope="col" class="text-center">Время</th> 
+                                                    <th scope="col" class="text-center">Имя учащегося/группы</th> 
+                                                </tr>                                   
+                                            </thead>                                 
+                                            <tbody> 
+                                                <tr name="sc-2-1"> 
+                                                    <td name="sc-2-1-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-1-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-1-3" class="text-center"><input type="text"/></td> 
+                                                </tr>                                     
+                                                <tr name="sc-2-2"> 
+                                                    <td name="sc-2-2-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-2-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-2-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-2-3"> 
+                                                    <td name="sc-2-3-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-3-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-3-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-2-4"> 
+                                                    <td name="sc-2-4-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-4-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-4-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-2-5"> 
+                                                    <td name="sc-2-5-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-5-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-5-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-2-6"> 
+                                                    <td name="sc-2-6-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-6-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-6-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-2-7"> 
+                                                    <td name="sc-2-7-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-7-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-7-3" class="text-center"><input type="text"/></td> 
+                                                </tr> 
+                                                <tr name="sc-2-8"> 
+                                                    <td name="sc-2-8-1" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-8-2" class="text-center"><input type="text"/></td> 
+                                                    <td name="sc-2-8-3" class="text-center"><input type="text"/></td> 
+                                                </tr>                                     
+                                            </tbody>                               
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="s_table">
+                                    <h3>Среда</h3>
+                                    <div class="align-middle table-responsive text-center">
+                                        <table class="table"> 
+                                           <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 60%;">
+                                            </colgroup>
+                                            <thead> 
+                                                <tr> 
+                                                    <th scope="col" class="text-center">Кабинет</th> 
+                                                    <th scope="col" class="text-center">Время</th> 
+                                                    <th scope="col" class="text-center">Имя учащегося/группы</th> 
+                                                </tr>                                     
+                                            </thead>                                 
+                                            <tbody> 
+                                                <tr name="sc-3-1"> 
+                                                    <td name="sc-3-1-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-1-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-1-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                                <tr name="sc-3-2"> 
+                                                    <td name="sc-3-2-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-2-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-2-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-3-3"> 
+                                                    <td name="sc-3-3-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-3-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-3-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-3-4"> 
+                                                    <td name="sc-3-4-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-4-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-4-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-3-5"> 
+                                                    <td name="sc-3-5-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-5-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-5-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-3-6"> 
+                                                    <td name="sc-3-6-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-6-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-6-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-3-7"> 
+                                                    <td name="sc-3-7-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-7-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-7-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-3-8"> 
+                                                    <td name="sc-3-8-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-8-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-3-8-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                            </tbody>                               
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="s_table">
+                                    <h3>Четверг</h3>
+                                    <div class="align-middle table-responsive text-center">
+                                        <table class="table"> 
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 60%;">
+                                            </colgroup>
+                                            <thead> 
+                                                <tr> 
+                                                    <th scope="col" class="text-center">Кабинет</th> 
+                                                    <th scope="col" class="text-center">Время</th> 
+                                                    <th scope="col" class="text-center">Имя учащегося/группы</th> 
+                                                </tr>                                    
+                                            </thead>                                 
+                                            <tbody> 
+                                                <tr name="sc-4-1"> 
+                                                    <td name="sc-4-1-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-1-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-1-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                                <tr name="sc-4-2"> 
+                                                    <td name="sc-4-2-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-2-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-2-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-4-3"> 
+                                                    <td name="sc-4-3-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-3-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-3-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-4-4"> 
+                                                    <td name="sc-4-4-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-4-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-4-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-4-5"> 
+                                                    <td name="sc-4-5-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-5-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-5-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-4-6"> 
+                                                    <td name="sc-4-6-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-6-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-6-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-4-7"> 
+                                                    <td name="sc-4-7-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-7-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-7-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-4-8"> 
+                                                    <td name="sc-4-8-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-8-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-4-8-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                            </tbody>                                 
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="s_table">
+                                    <h3>Пятница</h3>
+                                    <div class="table-responsive text-center">
+                                        <table class="table"> 
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 60%;">
+                                            </colgroup>
+                                            <thead> 
+                                                <tr> 
+                                                    <th scope="col" class="text-center">Кабинет</th> 
+                                                    <th scope="col" class="text-center">Время</th> 
+                                                    <th scope="col" class="text-center">Имя учащегося/группы</th> 
+                                                </tr>                                     
+                                            </thead>                                 
+                                            <tbody> 
+                                                <tr name="sc-5-1"> 
+                                                    <td name="sc-5-1-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-1-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-1-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                                <tr name="sc-5-2"> 
+                                                    <td name="sc-5-2-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-2-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-2-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-5-3"> 
+                                                    <td name="sc-5-3-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-3-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-3-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-5-4"> 
+                                                    <td name="sc-5-4-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-4-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-4-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-5-5"> 
+                                                    <td name="sc-5-5-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-5-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-5-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-5-6"> 
+                                                    <td name="sc-5-6-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-6-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-6-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-5-7"> 
+                                                    <td name="sc-5-7-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-7-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-7-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-5-8"> 
+                                                    <td name="sc-5-8-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-8-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-5-8-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                            </tbody>                                 
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="s_table">
+                                    <h3>Суббота</h3>
+                                    <div class="table-responsive text-center">
+                                        <table class="table"> 
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 60%;">
+                                            </colgroup>
+                                            <thead> 
+                                                <tr> 
+                                                    <th scope="col" class="text-center">Кабинет</th> 
+                                                    <th scope="col" class="text-center">Время</th> 
+                                                    <th scope="col" class="text-center">Имя учащегося/группы</th> 
+                                                </tr>                                    
+                                            </thead>                                 
+                                            <tbody> 
+                                                <tr name="sc-6-1"> 
+                                                    <td name="sc-8-1-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-1-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-1-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                                <tr name="sc-6-2"> 
+                                                    <td name="sc-8-2-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-2-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-2-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-6-3"> 
+                                                    <td name="sc-8-3-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-3-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-3-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-6-4"> 
+                                                    <td name="sc-8-4-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-4-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-4-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-6-5"> 
+                                                    <td name="sc-8-5-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-5-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-5-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-6-6"> 
+                                                    <td name="sc-8-6-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-6-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-6-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-6-7"> 
+                                                    <td name="sc-8-7-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-7-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-7-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr> 
+                                                <tr name="sc-6-8"> 
+                                                    <td name="sc-8-8-1" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-8-2" class="text-center"><input type="text" value=""/></td> 
+                                                    <td name="sc-8-8-3" class="text-center"><input type="text" value=""/></td> 
+                                                </tr>                                     
+                                            </tbody>                                 
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>                 
+                        </section>
+                    </div>
+                   </div>
+                   <div class="add-info">
+                        <div class="add-column"> 
+                            <div class="align-middle table-responsive text-center">
+                                <table class="table"> 
+                                    <thead> 
+                                        <tr> 
+                                            <th scope="col" class="align-middle" id="awards">Награды</th> 
+                                        </tr>                                     
+                                    </thead>                                 
+                                    <tbody>                        
+                                        <tr> 
+                                            <td><textarea>Золотая медаль "Лучший преподаватель года"</textarea></td> 
+                                        </tr>
+                                        <tr> 
+                                            <td><textarea>Сертификат "Выдающийся вклад в образование"</textarea></td> 
+                                        </tr>                                     
+                                        <tr> 
+                                            <td><textarea>Почетный диплом "За высокий профессионализм и отличные результаты"</textarea></td> 
+                                        </tr> 
+                                        <tr> 
+                                            <td><textarea>Премия "Преподаватель-победитель" за достижения в культурных исследованиях</textarea></td> 
+                                        </tr> 
+                                        <tr> 
+                                            <td><textarea>Знак отличия "За вклад в развитие студенческой среды и активное воспитательное воздействие"</textarea></td> 
+                                        </tr>                                     
+                                    </tbody>                                 
+                                </table>
+                                <a href="" id="bub" class="border-button" name="class-log " style="color: #38b13e;">Добавить награду</a>
+                            </div>
+                            <div class="href-buttons">
+                                <div class="example-2" style="width: 100%;">
+                                    <div class="form-group" style="margin: 0;">
+                                        <input type="file" name="file" id="methodological-passport-create" class="input-file">
+                                        <label for="file" class="btn btn-tertiary js-labelFile"><i class="icon fa fa-check"></i><span class="js-fileName">Загрузить методический паспорт</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="example-2" style="width: 100%;">
+                                    <div class="form-group" style="margin: 0;">
+                                        <input type="file" name="file" id="reciprocity-create" class="input-file">
+                                        <label for="file" class="btn btn-tertiary js-labelFile"><i class="icon fa fa-check"></i><span class="js-fileName">Загрузить взаимопосещаемость</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <a href="" class="border-button" name="done">Создать преподавателя<a>
+                            </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>                 
+            </section>             
+        </main>         
+    </body>   
+    <script src="teacher_edit.js"></script>
+
+</html>
