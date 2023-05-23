@@ -32,87 +32,71 @@
                         <div class="class"> 
                             <div class="search-engine"> 
                                 <div class="mb-3"> 
-                                    <label for="formDatalists64" class="form-label">Список групп и учащихся</label>  
-                                                                       
+                                    <label for="formDatalists64" class="form-label">Список групп и учащихся</label>
                                     <div class="contain">
-                                       
                                         <input class="form-control search-input" list="datalistOptions" id="formDatalists64" placeholder="Напишите имя учащегося или номер группы...">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">Режим поиска</button>  
-                                        <div class="dropdown">                                              
-
-                                            <ul class="dropdown-menu" aria-labelledby="dropdown1"> 
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown1" data-bs-toggle="dropdown" aria-expanded="false">Режим поиска</button>
+                                        <div class="dropdown">
+                                            <ul class="dropdown-menu" aria-labelledby="dropdown1">
                                                 <li>
-                                                    <a class="dropdown-item" href="#">Группы</a>
-                                                </li>                                                 
-
+                                                    <a class="dropdown-item" href="#" data-mode="groups">Группы</a>
+                                                </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="#">Учащиеся</a>
-                                                </li>                                                                                                
-                                            </ul>                                             
-                                        </div>                                       
+                                                    <a class="dropdown-item" href="#" data-mode="students">Учащиеся</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $('.dropdown-item').click(function() {
+                                                    var selectedMode = $(this).data('mode');
+                                                    if (selectedMode === 'groups') {
+                                                        $('#students-info').hide();
+                                                        $('#groups-info').show();
+                                                    } else if (selectedMode === 'students') {
+                                                        $('#groups-info').hide();
+                                                        $('#students-info').show();
+                                                    }
+                                                    $('#dropdown1').text($(this).text());
+                                                });
+                                            });
+                                        </script>
                                     </div>                                     
                                 </div>                                 
                             </div>                             
                         </div>                         
-                        <div class="scroll-table-body"> 
+                        <div class="scroll-table-body" id = "students-info" style="display: none;">
                             <table> 
-                                <tbody> 
-                                    <tr> 
-                                        <td><a href="#">Иванов Иван Иванович</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Смирнова Анна Петровна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Кузнецов Алексей Владимирович</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Попова Екатерина Сергеевна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Васильев Дмитрий Александрович</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Петрова Ольга Николаевна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Соколов Илья Алексеевич</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Михайлова Елена Денисовна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Федоров Павел Викторович</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Семенова Анастасия Сергеевна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Егоров Артем Евгеньевич</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Николаева Мария Алексеевна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Дмитриев Александр Игоревич</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Калинина Виктория Степановна</a></td> 
-                                    </tr>                                     
-                                    <tr> 
-                                        <td><a href="#">Лебедев Максим Андреевич</a></td> 
-                                    </tr>                                     
+                                <tbody>
+                                {% for student in students %}
+                                    <tr>
+                                        <td><a href="{% url 'student-info' student.id %}">{{ student.fio }}</a></td>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>                                 
                             </table>                             
-                        </div>                         
+                        </div>
+
+                        <div class="scroll-table-body" id = "groups-info" style="display: none;">
+                            <table>
+                                <tbody>
+                                {% for group in groups %}
+                                    <tr>
+                                        <td><a href="{% url 'group-info' group.id %}">{{ group.number }}</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>                     
                 </div>                 
             </div>             
         </main>         
-        <script src="assets/js/popper.min.js"></script>         
-        <script src="bootstrap/js/bootstrap.min.js"></script>         
-        <script src="./fc/packages/moment/index.global.min.js"></script>         
-        <script src="./fc/packages/"></script>         
+{#        <script src="{% static 'styles/assets/js/popper.min.js' %}"></script>#}
+{#        <script src="{% static 'styles/bootstrap/js/bootstrap.min.js' %}"></script>#}
+{#        <script src="{% static 'styles/fc/packages/moment/index.global.min.js' %}"></script>#}
+{#        <script src="{% static 'styles/fc/packages' %}"></script>#}
     </body>     
 </html>
 {% endblock %}

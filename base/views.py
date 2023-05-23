@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.contrib.auth.decorators import login_required
 from .models import New, User, About, Message, File, Event,\
-    Task, UserFiles
+    Task, UserFiles, GroupNumber
 from django.contrib.auth import authenticate, login, logout
 from .forms import NewForm, RegistrationForm, AboutForm, \
     FileUploadForm, EventCreationForm, TaskCreationForm, \
@@ -103,16 +103,31 @@ def userProfile(request, pk):
 def admin_page(request, pk):
     messages = Message.objects.all()
     admin = User.objects.get(id=pk)
+    selected_option = request.POST.get('btnradio')
+    type = 'buff'
+    if selected_option == 'Академическое':
+        type = 'academy'
+    elif selected_option == 'Методическое':
+        type = 'method'
+    elif selected_option == 'Воспитательное':
+        type = 'treat'
     if request.method == 'POST':
         print(1)
         msg = Message.objects.create(
             user = request.user,
             body=request.POST.get('body'),
-            type = request.POST.get(''),
+            type = type,
         )
         return redirect('admin-page', request.user.id)
     context = {'admin':admin, 'messages':messages}
     return render(request, 'base/admin_page.html', context)
+
+
+def group_info(request, pk):
+    group = GroupNumber(id=pk)
+    students = User.objects.filter(groups=group)
+    context = {'group': group, 'students': students}
+    return render(request, 'base/group_info.html', context)
 
 
 def teacher_page(request, pk):
@@ -212,8 +227,17 @@ def teachers(request):
 def musicLib(request):
     if request.method == 'GET':
         query = request.GET.get('queryInput')
+        subject = request.GET.get('subjectInput')
+        author = request.GET.get('authorInput')
+        department = request.GET.get('departmentInput')
         if query:
             files = File.objects.filter(file_name__icontains=query)
+        elif subject:
+            files = File.objects.filter(subject__contains=subject)
+        elif author:
+            files = File.objects.filter(author__contains=author)
+        elif department:
+            files = File.objects.filter(department__contains=department)
         else:
             files = File.objects.all()
 
@@ -376,8 +400,9 @@ def new_event(request):
 
 
 def contingent(request):
-    users = User.objects.filter(status='student')
-    context = {'users':users}
+    students = User.objects.filter(status='student')
+    groups = GroupNumber.objects.all()
+    context = {'students': students, 'groups': groups}
     return render(request, 'base/contingent.html', context)
 
 
@@ -387,10 +412,10 @@ def student_info(request, pk):
     current_year = datetime.now().year
     start_year = student.start_year.year
     grade = current_year - start_year + 1
-    plan = UserFiles.objects.get(user__fio=student.fio)
+    plan = UserFiles.objects.get(user__fio=student.fio, type='individual')
     if datetime.now().month < 9:
         grade -= 1
-    context = {"student": student, "groups":groups, "grade":grade}
+    context = {"student": student, "groups":groups, "grade":grade, 'plan': plan}
     return render(request, 'base/student_info.html', context)
 
 

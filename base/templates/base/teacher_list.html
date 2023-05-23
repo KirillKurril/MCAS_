@@ -39,9 +39,9 @@
                         <div class="scroll-table-body">
                             <table>
                                 <tbody>
-                                {% for student in students %}
+                                {% for teacher in teachers %}
                                   <tr>
-                                    <td><a href="{% url 'student-info' student.id %}">student.fio</a></td>
+                                    <td><a href="{% url 'teachers-info' teacher.id %}">{{ teacher.fio }}</a></td>
                                   </tr>
                                   <!-- <tr>
                                     <td>
@@ -62,4 +62,4 @@
         <script src="{% static 'styles/fc/packages' %}"></script>
     </body>     
 </html>
-{% enblock content%}
+{% endblock content%}

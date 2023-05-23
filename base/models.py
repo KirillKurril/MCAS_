@@ -5,7 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 import os
 from django.core.validators import RegexValidator
 
-# Create your models here.
 
 class GroupNumber(models.Model):
     number = models.CharField(max_length=25, blank=False, null=False, default='Номер группы')
