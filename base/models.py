@@ -6,6 +6,25 @@ import os
 from django.core.validators import RegexValidator
 
 
+class Event(models.Model):
+    DEPARTMENT_CHOICES = (
+        ('piano', 'Фортепианное'),
+        ('strings', 'Струнно-смычковое'),
+        ('folk', 'Народное'),
+        ('string-folk', 'Струнно-народное'),
+        ('choir', 'Хоровое'),
+        ('theory', 'Теоретическое'),
+        ('academy', 'Академические концерты'),
+        ('method', 'Методическая работа'),
+        ('treat', 'Воспитательная работа'),
+    )
+
+    title = models.CharField(max_length=200, null=False)
+    description = models.TextField(null=True)
+    date = models.DateField()
+    department = models.CharField(max_length=20, choices=DEPARTMENT_CHOICES, null=False, default='piano')
+
+
 class GroupNumber(models.Model):
     number = models.CharField(max_length=25, blank=False, null=False, default='Номер группы')
 
@@ -53,10 +72,18 @@ class User(AbstractUser):
     groups = models.ManyToManyField(GroupNumber, blank=True)
     subjects = models.ManyToManyField(Subject, blank=True)
     students = models.ManyToManyField('self', symmetrical=False, blank=True, limit_choices_to={'status': 'student'})
+    events = models.ManyToManyField(Event)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
+
+class Group(models.Model):
+    students = models.ManyToManyField(User, limit_choices_to={'status': 'student'})
+    num = models.ForeignKey(GroupNumber)
+
+    def __str__(self):
+        return self.num
 
 class New(models.Model):
     title = models.CharField(max_length=256, verbose_name="Название статьи")
@@ -93,7 +120,7 @@ class Message(models.Model):
 
 class File(models.Model):
     file_name = models.CharField(max_length=75, default='default_name')
-    file_upload = models.FileField(upload_to='library')
+    file_upload = models.FileField(upload_to='library', default='images/profile-pictures/default.jpg')
     department = models.CharField(max_length=50, default='default_department')
     author = models.CharField(max_length=50, default='default_author')
     subject = models.CharField(max_length=50, default='default_subject')
@@ -117,24 +144,6 @@ class UserFiles(File):
         return self.file_name
 
 
-class Event(models.Model):
-    DEPARTMENT_CHOICES = (
-        ('piano', 'Фортепианное'),
-        ('strings', 'Струнно-смычковое'),
-        ('folk', 'Народное'),
-        ('string-folk', 'Струнно-народное'),
-        ('choir', 'Хоровое'),
-        ('theory', 'Теоретическое'),
-        ('academy', 'Академические концерты'),
-        ('method', 'Методическая работа'),
-        ('treat', 'Воспитательная работа'),
-    )
-
-    title = models.CharField(max_length=200, null=False)
-    description = models.TextField(null=True)
-    date = models.DateField()
-    department = models.CharField(max_length=20, choices=DEPARTMENT_CHOICES, null=False, default='piano')
-
 
 class Task(models.Model):
     grouped = models.BooleanField(default=False)
@@ -144,7 +153,6 @@ class Task(models.Model):
     subject_number = models.IntegerField(blank=False, default=1, verbose_name='Номер урока')
     sub = models.ForeignKey(Subject, verbose_name="Название урока", null=True, on_delete=models.CASCADE)
     student_name = models.ForeignKey(User, verbose_name='Учащийся', null=True, blank= True, on_delete=models.CASCADE)
-
 
     def __str__(self):
         return self.description

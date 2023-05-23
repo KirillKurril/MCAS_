@@ -104,6 +104,8 @@ def admin_page(request, pk):
     messages = Message.objects.all()
     admin = User.objects.get(id=pk)
     selected_option = request.POST.get('btnradio')
+    collective = UserFiles.objects.get(user__fio=admin.fio, type='collective')
+    working = UserFiles.objects.get(user__fio=admin.fio, type='working')
     type = 'buff'
     if selected_option == 'Академическое':
         type = 'academy'
@@ -119,7 +121,7 @@ def admin_page(request, pk):
             type = type,
         )
         return redirect('admin-page', request.user.id)
-    context = {'admin':admin, 'messages':messages}
+    context = {'admin':admin, 'messages':messages, 'collective': collective, 'working': working}
     return render(request, 'base/admin_page.html', context)
 
 
@@ -130,9 +132,26 @@ def group_info(request, pk):
     return render(request, 'base/group_info.html', context)
 
 
+def create_student(request):
+    return render(request, 'base/create_student.html')
+
+
+def create_teacher(request):
+    return render(request, 'base/create_teacher.html')
+
+
+def create_group(request):
+    return render(request, 'base/create_group.html')
+
+
+def switch(request):
+    return render(request, 'base/switch.html')
+
+
 def teacher_page(request, pk):
     teacher = User.objects.get(id=pk)
-    context = {'teacher': teacher}
+    messages = Message.objects.all()
+    context = {'teacher': teacher, 'messages': messages}
     return render(request, 'base/teacher_page.html', context)
 
 
@@ -220,7 +239,7 @@ def preview(request):
 
 def teachers(request):
     teacher_list = User.objects.filter(status='teacher')
-    context = {'teacher_list':teacher_list}
+    context = {'teachers':teacher_list}
     return render(request, 'base/teacher_list.html', context)
 
 

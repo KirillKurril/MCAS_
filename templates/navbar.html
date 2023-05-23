@@ -17,11 +17,18 @@
                             {% elif user.status == 'teacher'%}
                             <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'teacher-page' user.id %}">Личный кабинет</a>
                             </li>
+                            {% else %}
+                                <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'login' %}">Логин</a>
+                            </li>
                             {% endif %}
                             <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'news' %}">Новости</a>
                             </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item"> <a class="nav-link pb-lg-3 pe-lg-4 ps-lg-4 pt-lg-3" href="{% url 'logout' %}">Выйти</a>
+                            </li>
+                            {% endif %}
                             <li class="nav-item">
-</li>
+                            </li>
                             <li class="nav-item">
 </li>
                         </ul>

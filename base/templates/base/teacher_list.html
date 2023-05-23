@@ -28,31 +28,26 @@
             <div class="container"> 
                 <div class="list_table"> 
                     <div class="scroll-table">
-                        <div class="class">    
-                                    <div class="search-engine">
-                                    <div class="mb-3"> 
-                                        <label for="formDatalists64" class="form-label">Список учителей</label>                                         
-                                        <input class="form-control" list="datalistOptions" id="formDatalists64" placeholder="Напишите имя преподавателя...">                                       
-                                    </div>
-                                    </div>
-                        </div>                         
-                        <div class="scroll-table-body">
-                            <table>
-                                <tbody>
-                                {% for teacher in teachers %}
-                                  <tr>
-                                    <td><a href="{% url 'teachers-info' teacher.id %}">{{ teacher.fio }}</a></td>
-                                  </tr>
-                                  <!-- <tr>
-                                    <td>
-                                      <a href="" class="border-button" name="delete">Добавить учителя</a>  
-                                    </td>
-                                  </tr> -->
-                                {% endfor %}
-                                  </tbody>
-                            </table>
-                        </div>                         
-                    </div>                     
+                      <div class="class">
+                        <div class="search-engine">
+                          <div class="mb-3">
+                            <label for="formDatalists64" class="form-label">Список учителей</label>
+                            <input class="form-control" list="datalistOptions" id="formDatalists64" placeholder="Напишите имя преподавателя...">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="scroll-table-body">
+                        <table>
+                          <tbody>
+                            {% for teacher in teachers %}
+                              <tr>
+                                <td><a href="{% url 'teachers-info' teacher.id %}">{{ teacher.fio }}</a></td>
+                              </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                 </div>                 
             </div>             
         </main>         
@@ -60,6 +55,26 @@
         <script src="{% static 'styles/bootstrap/js/bootstrap.min.js' %}"></script>
         <script src="{% static 'styles/fc/packages/moment/index.global.min.js'%}"></script>
         <script src="{% static 'styles/fc/packages' %}"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var input = document.getElementById("formDatalists64");
+        input.addEventListener("input", function() {
+            var filter = input.value.toLowerCase();
+            var teacherRows = document.querySelectorAll(".scroll-table-body table tbody tr");
+
+            teacherRows.forEach(function(row) {
+                var teacherName = row.querySelector("td").textContent.toLowerCase();
+
+                if (teacherName.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+
     </body>     
 </html>
 {% endblock content%}

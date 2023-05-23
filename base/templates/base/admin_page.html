@@ -3,6 +3,8 @@
 {% block content %}
 <html lang="en"> 
     <head>
+        <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+        <link href="{% static 'styles/bootstrap_theme/bootstrap.css' %}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{% static 'styles/blocks.css' %}">
         <link href="{% static 'styles/style.css' %}" rel="stylesheet">
         <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>         
@@ -135,7 +137,7 @@
                         </div>                         
                     </div>
                 </form>
-                <div class="bottom-butts"><a href="" class="border-button" name="reciprocity">Коллективный договор</a><a href="" class="border-button" name="reciprocity">Трудовые договора</a> <a href="{% url 'register' %}" class="border-button" name="create-new">Создать сущность</a>
+                <div class="bottom-butts"><a href="{{ collective.file_upload.url }}" class="border-button" name="reciprocity">Коллективный договор</a><a href="{{ working.file_upload.url }}" class="border-button" name="reciprocity">Трудовые договора</a> <a href="{% url 'switch' %}" class="border-button" name="create-new">Создать сущность</a>
                 </div>
             </div>
         </section>         
